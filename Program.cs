@@ -6,7 +6,11 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            HelloWorld();
+            /* You will need to put the path to 
+             * your assets folder here: */
+            const string AssetsPath = "";
+
+            RenderFrame(AssetsPath + "TestFile.txt");
         }
     }
 }
