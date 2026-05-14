@@ -15,10 +15,18 @@ namespace ConsoleApp1
 
         public static void RenderFrame(string filePath)
         {
-            using StreamReader reader = new(filePath);
-            string fileContent = reader.ReadToEnd();
+            try
+            {
+                using StreamReader reader = new(filePath);
+                string fileContent = reader.ReadToEnd();
 
-            Console.WriteLine(fileContent);
+                Console.WriteLine(fileContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: is your path correct?");
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
