@@ -29,6 +29,12 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Writes the content of a string one char at a time with a delay.
+        /// </summary>
+        /// <param name="stringInput"></param>
+        /// <param name="delay"></param>
+        /// <param name="cursorVisible"></param>
         public static void Teleprinter(string stringInput, int delay, [Optional] bool cursorVisible)
         {
             if (cursorVisible == false)
@@ -59,6 +65,12 @@ namespace ConsoleApp1
             Console.CursorVisible = true;
         }
 
+        /// <summary>
+        /// Writes the contents of a text file one char at a time with a delay.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="delay"></param>
+        /// <param name="cursorVisible"></param>
         public static void TeleprinterFromFile(string filePath, int delay, [Optional] bool cursorVisible)
         {
             if (cursorVisible == false)
