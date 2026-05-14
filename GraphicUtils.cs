@@ -8,11 +8,6 @@ namespace ConsoleApp1
 {
     internal class GraphicUtils
     {
-        public static void HelloWorld()
-        {
-            Console.WriteLine("Hello World!");
-        }
-
         public static void RenderFrame(string filePath)
         {
             try
