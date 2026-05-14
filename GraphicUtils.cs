@@ -8,6 +8,10 @@ namespace ConsoleApp1
 {
     internal class GraphicUtils
     {
+        /// <summary>
+        /// Writes the contents of a text file to the console.
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void RenderFrame(string filePath)
         {
             try
