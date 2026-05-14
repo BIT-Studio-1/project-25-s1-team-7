@@ -12,5 +12,13 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Hello World!");
         }
+
+        public static void RenderFrame(string filePath)
+        {
+            using StreamReader reader = new(filePath);
+            string fileContent = reader.ReadToEnd();
+
+            Console.WriteLine(fileContent);
+        }
     }
 }
