@@ -13,8 +13,8 @@ namespace ConsoleApp1
         /// Writes the contents of a text file to the console.
         /// </summary>
         /// <param name="filePath"></param>
-        /// <param name="delay"></param>
-        public static void RenderFrame(string filePath, [Optional] int delay)
+        /// <param name="endDelay"></param>
+        public static void RenderFrame(string filePath, [Optional] int endDelay)
         {
             Console.CursorVisible = false;
 
@@ -24,36 +24,15 @@ namespace ConsoleApp1
                 string fileContent = reader.ReadToEnd();
 
                 Console.WriteLine(fileContent);
-                if (delay > 0)
+                if (endDelay > 0)
                 {
-                    Thread.Sleep(delay);
+                    Thread.Sleep(endDelay);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: is your path correct?");
                 Console.WriteLine(ex.Message);
-            }
-
-            Console.CursorVisible = true;
-        }
-
-        public static void RenderFrames(string folderPath)
-        {
-            Console.CursorVisible = false;
-
-            string[] framesArray = Directory.GetFiles(folderPath, "*_frame.txt");
-            Array.Sort(framesArray);
-
-            foreach (string frame in framesArray)
-            {
-                Console.SetCursorPosition(0, 0);
-
-                using StreamReader reader = new(frame);
-                string fileContent = reader.ReadToEnd();
-
-                Console.WriteLine(fileContent);
-                Thread.Sleep(2000);
             }
 
             Console.CursorVisible = true;
