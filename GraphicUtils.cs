@@ -29,6 +29,21 @@ namespace ConsoleApp1
             }
         }
 
+        public static void RenderFrames(string folderPath)
+        {
+            string[] framesArray = Directory.GetFiles(folderPath, "*_frame.txt");
+            Array.Sort(framesArray);
+
+            foreach (string frame in framesArray)
+            {
+                using StreamReader reader = new(frame);
+                string fileContent = reader.ReadToEnd();
+
+                Console.WriteLine(fileContent);
+                Thread.Sleep(2000);
+            }
+        }
+
         /// <summary>
         /// Writes the contents of a string one char at a time with a delay.
         /// </summary>
