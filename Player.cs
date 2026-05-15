@@ -28,7 +28,7 @@ namespace ConsoleApp1
         }
         public void UseItem(Item item)
         {
-            
+
         }
         //TD and Heal methods are just an idea, could be used for boss fights, or wrong interactions that cause consequences.
         public void TakeDamage(int damage)
@@ -60,3 +60,4 @@ namespace ConsoleApp1
             }
         }
     }
+}
