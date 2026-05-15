@@ -30,7 +30,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// Writes the content of a string one char at a time with a delay.
+        /// Writes the contents of a string one char at a time with a delay.
         /// </summary>
         /// <param name="stringInput"></param>
         /// <param name="delay"></param>
