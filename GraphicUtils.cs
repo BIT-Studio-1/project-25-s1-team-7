@@ -13,8 +13,8 @@ namespace ConsoleApp1
         /// Writes the contents of a text file to the console.
         /// </summary>
         /// <param name="filePath"></param>
-        /// <param name="endDelay"></param>
-        public static void RenderFrame(string filePath, [Optional] int endDelay)
+        /// <param name="delay"></param>
+        public static void RenderFrame(string filePath, [Optional] int delay)
         {
             Console.CursorVisible = false;
 
@@ -23,10 +23,17 @@ namespace ConsoleApp1
                 using StreamReader reader = new(filePath);
                 string fileContent = reader.ReadToEnd();
 
-                Console.WriteLine(fileContent);
-                if (endDelay > 0)
+                foreach (string line in File.ReadLines(filePath))
                 {
-                    Thread.Sleep(endDelay);
+                    string formattedLine = line.Replace("[ANSI]", "\x1b")
+                                               .Replace("[/]", "\u001b[0m");
+
+                    Console.WriteLine(formattedLine);
+                }
+
+                if (delay > 0)
+                {
+                    Thread.Sleep(delay);
                 }
             }
             catch (Exception ex)
