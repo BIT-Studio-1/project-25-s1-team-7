@@ -36,6 +36,8 @@ namespace ConsoleApp1
 
             foreach (string frame in framesArray)
             {
+                Console.SetCursorPosition(0, 0);
+
                 using StreamReader reader = new(frame);
                 string fileContent = reader.ReadToEnd();
 
