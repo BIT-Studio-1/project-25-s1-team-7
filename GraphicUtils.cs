@@ -14,14 +14,14 @@ namespace ConsoleApp1
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="delay"></param>
-        public static void RenderFrame(string filePath, [Optional] int delay)
+        /// <param name="renderMultiple"></param>
+        public static void RenderFrame(string filePath, [Optional] int delay, [Optional] bool renderMultiple)
         {
             Console.CursorVisible = false;
 
             try
             {
-                using StreamReader reader = new(filePath);
-                string fileContent = reader.ReadToEnd();
+                Console.SetCursorPosition(0, 0);
 
                 foreach (string line in File.ReadLines(filePath))
                 {
@@ -38,11 +38,42 @@ namespace ConsoleApp1
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: is your path correct?");
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                if (!renderMultiple)
+                {
+                    Console.CursorVisible = true;
+                }
+            }
+        }
 
-            Console.CursorVisible = true;
+        /// <summary>
+        /// Writes the contents of a series of text files to the console.
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <param name="delay"></param>
+        public static void RenderFrames(string folderPath, int delay)
+        {
+            try
+            {
+                string[] frames = Directory.GetFiles(folderPath, "*_frame.txt");
+                Array.Sort(frames);
+
+                foreach (string frame in frames)
+                {
+                    RenderFrame(frame, delay, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.CursorVisible = true;
+            }
         }
 
         /// <summary>
