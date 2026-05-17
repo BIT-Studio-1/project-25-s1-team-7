@@ -10,4 +10,3 @@
 [ANSI][4mUnderline text[/]
 [ANSI][9mStrikethrough text[/]
 
-This should be regular text.
