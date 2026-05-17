@@ -14,8 +14,6 @@ namespace ConsoleApp1
 
             /* Do not change this path, it should
                work on any machine. */
-
-            RenderFrame(PathAssets + "Untitled-1.txt");
         }
     }
 }
