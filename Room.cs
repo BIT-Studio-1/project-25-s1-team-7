@@ -41,5 +41,18 @@ namespace ConsoleApp1
 
 
         }
-    }
+        public bool AttemptEscape(Player player)
+        {
+            if (isLocked) // will need to flesh out the logic for unlocking the door, this is just a placeholder.
+            {
+                Console.WriteLine("The door is locked. You need to find a way to unlock it.");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("You have escaped the room! Congratulations!");
+                isEscaped = true;
+                return true;
+            }
+        }
 }
