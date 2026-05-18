@@ -53,8 +53,14 @@ namespace ConsoleApp1
             _mapGrid[3, 2] = new Room("Secret Passage", "A narrow corridor hidden behind a bookshelf.", 4);
             _mapGrid[3, 3] = new Room("Final Chamber", "This is it. The last room stands between you and freedom.", 4);
 
-            //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
-            _mapGrid[1, 0].isLocked = true;
+            public void DisplayCurrentRoom() //simple room display method. Can be called in main script to show player their current location and room description.
+        { 
+                Console.WriteLine($"Current room: {CurrentRoom.Name}");
+                Console.WriteLine(CurrentRoom.Description);
+        }
+
+        //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
+        _mapGrid[1, 0].isLocked = true;
 
             //Player starting position.
             _playerCol = 0;
