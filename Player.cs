@@ -26,6 +26,18 @@ namespace ConsoleApp1
             Inventory.Add(item);
             Console.WriteLine($"{Name} picked up {item.Name}.");
         }
+        public void Drop(Item item)
+        {
+            if (Inventory.Contains(item))
+            {
+                Inventory.Remove(item);
+                Console.WriteLine($"{Name} dropped {item.Name}.");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} does not have {item.Name} in the inventory.");
+            }
+        } // Drop method is just an idea, could be used for puzzles that require dropping items, or for managing inventory space.
         public void UseItem(Item item)
         {
 
