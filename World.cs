@@ -34,7 +34,7 @@ namespace ConsoleApp1
             //_mapGrid[1, 1] = new Room("Room name here", "Room description here", 1);
             //_mapGrid[1, 2] = new Room("Room name here", "Room description here", 1);
 
-            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "C:\\Users\\Ashton Scott\\Visual Studio\\source\\repos\\project-25-s1-team-7\\assets\\entrance_hall.txt");
+            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "entrance_hall.txt"); //Place compartment ASCII in net8.0 folder (project-25-s1-team-7\bin\Debug\net8.0)
             _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "");
             _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "");
 
@@ -48,13 +48,8 @@ namespace ConsoleApp1
             _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, "");
             _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, "");
             _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, "");
-            _mapGrid[2, 3] = new Room("Observatory", "A telescope points at a sky you can't see.", 3, "");
-
-            _mapGrid[3, 0] = new Room("Catacombs", "Bones line the walls. The air is thick and heavy.", 4, "");
-            _mapGrid[3, 1] = new Room("Throne Room", "An imposing throne sits empty. The exit is so close.", 4, "");
-            _mapGrid[3, 2] = new Room("Secret Passage", "A narrow corridor hidden behind a bookshelf.", 4, "");
-            _mapGrid[3, 3] = new Room("Final Chamber", "This is it. The last room stands between you and freedom.", 4, "");
         }
+
 
         public void DisplayCurrentRoom() //simple room display method. Can be called in main script to show player their current location and room description.
         {
