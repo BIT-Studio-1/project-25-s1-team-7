@@ -44,25 +44,31 @@ namespace ConsoleApp1
         public List<string> GetAvailableDirections()
         {
             var directions = new List<string>();
-            if (_playerRow >= 0)
-            {
-                directions.Add("North");
-            }
+            //if (_playerRow >= 0)
+            //{
+            //    directions.Add("North");
+            //}
 
-            if (_playerRow <= 4)
-            {
-                directions.Add("South");
-            }
+            //if (_playerRow <= 4)
+            //{
+            //    directions.Add("South");
+            //}
 
-            if (_playerCol >= 0)
-            {
-                directions.Add("West");
-            }
+            //if (_playerCol >= 0)
+            //{
+            //    directions.Add("West");
+            //}
 
-            if (_playerCol <= 4)
-            {
-                directions.Add("East");
-            } 
+            //if (_playerCol <= 4)
+            //{
+            //    directions.Add("East");
+
+            //Fixed the above code. Was adding directions to list even when player was on the border of the map. Now checks if player is on the border before adding direction to list.
+            if (_playerRow > 0) directions.Add("North");  // room exists above
+            if (_playerRow < 3) directions.Add("South");  // room exists below
+            if (_playerCol > 0) directions.Add("West");   // room exists to the left
+            if (_playerCol < 3) directions.Add("East");   // room exists to the right
+        } 
             return directions;
         }
     }
