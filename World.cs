@@ -71,5 +71,30 @@ namespace ConsoleApp1
         } 
             return directions;
         }
+    public bool MovePlayer(string direction)
+    {
+        //Checks if the direction the player wants to move in is in the list of available directions. If it is, moves player in that direction and returns true. If not, returns false.
+        var availableDirections = GetAvailableDirections();
+        if (availableDirections.Contains(direction))
+        {
+            switch (direction)
+            {
+                case "North":
+                    _playerRow--;
+                    break;
+                case "South":
+                    _playerRow++;
+                    break;
+                case "West":
+                    _playerCol--;
+                    break;
+                case "East":
+                    _playerCol++;
+                    break;
+            }
+            return true;
+        }
+        return false;
+        } // Will need to create a sensitivity check for player input in main script to ensure they are entering directions in the correct format.
+          // Could also add a method here to convert player input to the correct format if they enter it in a different way.
     }
-}
