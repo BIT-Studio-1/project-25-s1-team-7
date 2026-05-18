@@ -23,7 +23,7 @@ namespace ConsoleApp1
 
             //Last integer value is room difficulty. Unsure if this is a good idea to implement though, just in terms of keeping things simple.
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
-            
+
             //_mapGrid[0, 0] = new Room("Room name here", "Room description here", 1);
             //_mapGrid[0, 1] = new Room("Room name here", "Room description here", 1);
             //_mapGrid[0, 2] = new Room("Room name here", "Room description here", 1);
@@ -52,15 +52,15 @@ namespace ConsoleApp1
             _mapGrid[3, 1] = new Room("Throne Room", "An imposing throne sits empty. The exit is so close.", 4);
             _mapGrid[3, 2] = new Room("Secret Passage", "A narrow corridor hidden behind a bookshelf.", 4);
             _mapGrid[3, 3] = new Room("Final Chamber", "This is it. The last room stands between you and freedom.", 4);
-
-            public void DisplayCurrentRoom() //simple room display method. Can be called in main script to show player their current location and room description.
-        { 
-                Console.WriteLine($"Current room: {CurrentRoom.Name}");
-                Console.WriteLine(CurrentRoom.Description);
         }
 
-        //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
-        _mapGrid[1, 0].isLocked = true;
+        public void DisplayCurrentRoom() //simple room display method. Can be called in main script to show player their current location and room description.
+        {
+            Console.WriteLine($"Current room: {CurrentRoom.Name}");
+            Console.WriteLine(CurrentRoom.Description);
+
+            //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
+            _mapGrid[1, 0].isLocked = true;
 
             //Player starting position.
             _playerCol = 0;
@@ -96,33 +96,35 @@ namespace ConsoleApp1
             if (_playerRow < 3) directions.Add("South");  // room exists below
             if (_playerCol > 0) directions.Add("West");   // room exists to the left
             if (_playerCol < 3) directions.Add("East");   // room exists to the right
-        } 
+
             return directions;
         }
-    public bool MovePlayer(string direction)
-    {
-        //Checks if the direction the player wants to move in is in the list of available directions. If it is, moves player in that direction and returns true. If not, returns false.
-        var availableDirections = GetAvailableDirections();
-        if (availableDirections.Contains(direction))
+
+        public bool MovePlayer(string direction)
         {
-            switch (direction)
+            //Checks if the direction the player wants to move in is in the list of available directions. If it is, moves player in that direction and returns true. If not, returns false.
+            var availableDirections = GetAvailableDirections();
+            if (availableDirections.Contains(direction))
             {
-                case "North":
-                    _playerRow--;
-                    break;
-                case "South":
-                    _playerRow++;
-                    break;
-                case "West":
-                    _playerCol--;
-                    break;
-                case "East":
-                    _playerCol++;
-                    break;
+                switch (direction)
+                {
+                    case "North":
+                        _playerRow--;
+                        break;
+                    case "South":
+                        _playerRow++;
+                        break;
+                    case "West":
+                        _playerCol--;
+                        break;
+                    case "East":
+                        _playerCol++;
+                        break;
+                }
+                return true;
             }
-            return true;
-        }
-        return false;
+            return false;
         } // Will need to create a sensitivity check for player input in main script to ensure they are entering directions in the correct format.
           // Could also add a method here to convert player input to the correct format if they enter it in a different way.
     }
+}
