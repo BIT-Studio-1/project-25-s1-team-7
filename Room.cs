@@ -14,12 +14,14 @@ namespace ConsoleApp1
         public int Difficulty { get; set; }
         public bool isLocked { get; set; }
         public bool isEscaped { get; set; } = false;
+        public string scenePath { get; set; }
 
-        public Room(string name, string description, int difficulty)
+        public Room(string name, string description, int difficulty, string ScenePath)
         {
             Name = name;
             Description = description;
             Difficulty = difficulty;
+            scenePath = ScenePath;
         }
         public void displayRoom()
         {
