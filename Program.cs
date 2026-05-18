@@ -54,6 +54,8 @@ namespace ConsoleApp1
                         player.showInventory();
                         break;
                     case "quit":
+                    case "exit":
+                    case "q":
                         running = false;
                         Console.WriteLine("Thanks for playing!");
                         break;
