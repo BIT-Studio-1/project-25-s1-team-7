@@ -40,7 +40,15 @@ namespace ConsoleApp1
         } // Drop method is just an idea, could be used for puzzles that require dropping items, or for managing inventory space.
         public void UseItem(Item item)
         {
-
+            // TODO: implement item use logic
+            if (Inventory.Contains(item))
+            {
+                Console.WriteLine($"{Name} used {item.Name}.");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} does not have {item.Name} in the inventory.");
+            }
         }
         //TD and Heal methods are just an idea, could be used for boss fights, or wrong interactions that cause consequences.
         public void TakeDamage(int damage)
