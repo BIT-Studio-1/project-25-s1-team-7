@@ -35,7 +35,8 @@ namespace ConsoleApp1
             bool running = true;
             while (running) // Game loop, will continue until player types 'quit'
             {
-                Console.WriteLine("What do you want to do? (type 'help' for commands)");
+                Console.WriteLine("What do you want to do? (type 'help' for commands)\n");
+                Console.Write("> ");
                 string command = Console.ReadLine().Trim().ToLower();
                 switch (command)
                 {
@@ -58,6 +59,10 @@ namespace ConsoleApp1
                     case "q":
                         running = false;
                         Console.WriteLine("Thanks for playing!");
+                        break;
+                    case "cls":
+                    case "clear":
+                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("Unknown command. Type 'help' for a list of commands.");
