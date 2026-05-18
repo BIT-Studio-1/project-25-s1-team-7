@@ -28,8 +28,8 @@ namespace ConsoleApp1
             _mapGrid[0, 2] = new Room("Room name here", "Room description here", 1);
 
             _mapGrid[1, 0] = new Room("Room name here", "Room description here", 1);
-            _mapGrid[1, 0] = new Room("Room name here", "Room description here", 1);
-            _mapGrid[1, 0] = new Room("Room name here", "Room description here", 1);
+            _mapGrid[1, 1] = new Room("Room name here", "Room description here", 1);
+            _mapGrid[1, 2] = new Room("Room name here", "Room description here", 1);
 
             //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
             _mapGrid[1, 0].isLocked = true;
