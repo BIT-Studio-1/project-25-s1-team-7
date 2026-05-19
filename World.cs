@@ -10,7 +10,7 @@ namespace ConsoleApp1
 {
     internal class World
     {
-        //Initialises world map in a 4 by 4 2D array. Player location determined by row and column.
+        //Initialises world map in a 3x3 2D array. Player location determined by row and column.
         //Map and player location encapsulated to prevent player input modifying these values.
         private Room[,] _mapGrid;
         private int _playerRow;
@@ -21,7 +21,7 @@ namespace ConsoleApp1
 
         public World()
         {
-            _mapGrid = new Room[4, 4];
+            _mapGrid = new Room[2, 2];
 
             //Last integer value is room difficulty. Unsure if this is a good idea to implement though, just in terms of keeping things simple.
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
