@@ -17,6 +17,8 @@ namespace ConsoleApp1
         private int _playerRow = 0;
         private int _playerCol= 1;
 
+
+
         //Call this to display current room via World class ie - "Current room: {world.CurrentRoom}";
         public Room CurrentRoom => _mapGrid[_playerRow, _playerCol];
 
@@ -36,11 +38,11 @@ namespace ConsoleApp1
             //_mapGrid[1, 2] = new Room("Room name here", "Room description here", 1);
 
             _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "entrance_hall.txt"); //Place compartment ASCII in net8.0 folder (project-25-s1-team-7\bin\Debug\net8.0)
-            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "stone_cell.txt");
-            _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "dusty_library.txt");
+            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "");
+            _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "");
 
             _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, "");
-            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armor stand in the corner.", 3, "");
+            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, "");
             _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, "");
 
             _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, "");
@@ -60,9 +62,6 @@ namespace ConsoleApp1
             //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
             _mapGrid[1, 0].isLocked = true;
 
-            //Player starting position.
-            _playerCol = 0;
-            _playerRow = 0;
         }
 
         //Returns list of strings of available directions to travel. 
@@ -70,36 +69,23 @@ namespace ConsoleApp1
         public List<string> GetAvailableDirections()
         {
             var directions = new List<string>();
-            //if (_playerRow >= 0)
-            //{
-            //    directions.Add("North");
-            //}
 
-            //if (_playerRow <= 4)
-            //{
-            //    directions.Add("South");
-            //}
-
-            //if (_playerCol >= 0)
-            //{
-            //    directions.Add("West");
-            //}
-
-            //if (_playerCol <= 4)
-            //{
-            //    directions.Add("East");
-
-            //Fixed the above code. Was adding directions to list even when player was on the border of the map. Now checks if player is on the border before adding direction to list.
             if (_playerRow > 0) directions.Add("North");  // room exists above
-            if (_playerRow < 3) directions.Add("South");  // room exists below
+            if (_playerRow < 2) directions.Add("South");  // room exists below
             if (_playerCol > 0) directions.Add("West");   // room exists to the left
-            if (_playerCol < 3) directions.Add("East");   // room exists to the right
+            if (_playerCol < 2) directions.Add("East");   // room exists to the right
 
-            return directions;
+            Console.WriteLine("Choose a direction to travel (north, south, east, west");
+
+            string chosenDirection = Console.ReadLine().ToLower();
+
+
+
         }
 
-        public bool MovePlayer(string direction)
+        public void MovePlayer(string direction)
         {
+
             //Checks if the direction the player wants to move in is in the list of available directions. If it is, moves player in that direction and returns true. If not, returns false.
             var availableDirections = GetAvailableDirections();
             if (availableDirections.Contains(direction))
@@ -118,10 +104,16 @@ namespace ConsoleApp1
                     case "East":
                         _playerCol++;
                         break;
+                    default:
+                        Console.WriteLine("Invalid input. Please try north, south, east or west.");
+                        return;
                 }
-                return true;
             }
-            return false;
+            else
+            {
+                Console.WriteLine("You walk into a solid stone wall.");
+                return;
+            }
         } // Will need to create a sensitivity check for player input in main script to ensure they are entering directions in the correct format.
           // Could also add a method here to convert player input to the correct format if they enter it in a different way.
     }
