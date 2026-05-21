@@ -193,5 +193,10 @@ namespace ConsoleApp1
         {
             Console.Write($"\u001b[48;2;{r};{g};{b}m");
         }
+
+        public static void ResetGraphics()
+        {
+            Console.Write($"\u001b[0m");
+        }
     }
 }
