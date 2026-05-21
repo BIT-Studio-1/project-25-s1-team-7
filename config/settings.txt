@@ -1,0 +1,3 @@
+We could put settings in here if we need to, probably a better place for constant variables like paths etc.
+
+Or if we wanted to implement a debug mode, would be nice to set that up here as a bool value.
