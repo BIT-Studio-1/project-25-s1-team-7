@@ -25,7 +25,8 @@ namespace ConsoleApp1
                work on any machine. */
 
             Console.Write("Enter your name: ");
-            SetBlinky(true); // New blinky mode
+            SetBlinky(); // New blinky mode
+            SetBackgroundColor(255, 255, 0);
             InvertColor();
             string playerName = Console.ReadLine();
             ResetGraphics();
