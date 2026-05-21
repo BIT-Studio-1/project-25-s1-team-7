@@ -171,5 +171,17 @@ namespace ConsoleApp1
                 Console.Write($"\u001b[?25l");
             }
         }
+
+        public static void ClearScreen(bool clearScrollBackBuffer = false)
+        {
+            if (clearScrollBackBuffer)
+            {
+                Console.Write($"\u001b[3J" + "\u001b[2J");
+            }
+            else
+            {
+                Console.Write($"\u001b[2J");
+            }
+        }
     }
 }
