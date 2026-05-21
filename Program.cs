@@ -26,6 +26,7 @@ namespace ConsoleApp1
 
             Console.Write("Enter your name: ");
             SetBlinky(true); // New blinky mode
+            InvertColor();
             string playerName = Console.ReadLine();
             ResetGraphics();
             Player player = new(playerName);
