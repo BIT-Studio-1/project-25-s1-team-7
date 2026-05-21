@@ -13,15 +13,16 @@ namespace ConsoleApp1
         //Initialises world map in a 3x3 2D array. Player location determined by row and column.
         //Map and player location encapsulated to prevent player input modifying these values.
         private Room[,] _mapGrid;
-        private int _playerRow;
-        private int _playerCol;
+        //Player starts in bottom middle square of 3x3 grid.
+        private int _playerRow = 0;
+        private int _playerCol= 1;
 
         //Call this to display current room via World class ie - "Current room: {world.CurrentRoom}";
         public Room CurrentRoom => _mapGrid[_playerRow, _playerCol];
 
         public World()
         {
-            _mapGrid = new Room[2, 2];
+            _mapGrid = new Room[3, 3];
 
             //Last integer value is room difficulty. Unsure if this is a good idea to implement though, just in terms of keeping things simple.
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
@@ -41,9 +42,6 @@ namespace ConsoleApp1
             _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, "");
             _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, "");
             _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, "");
-            _mapGrid[0, 3] = new Room("Armoury", "Weapon racks line the walls, all empty.", 2, "");
-
-            _mapGrid[1, 3] = new Room("Torture Chamber", "You don't want to spend long in here.", 3, "");
 
             _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, "");
             _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, "");
