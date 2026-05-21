@@ -25,7 +25,9 @@ namespace ConsoleApp1
                work on any machine. */
 
             Console.Write("Enter your name: ");
+            SetBlinky(true); // New blinky mode
             string playerName = Console.ReadLine();
+            ResetGraphics();
             Player player = new(playerName);
 
             //TODO: Load World
