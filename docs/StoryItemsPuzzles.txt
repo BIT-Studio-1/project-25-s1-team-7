@@ -12,12 +12,12 @@ NPC could be an old Minion or apprentice of the evil sorcerer, locked up in the 
 
 Items + Description:
 
-Key 1 - A mysterious 
-Key 2
-Key 3
-Key 4
+Key 1 - A mysterious blue key that is the first step to getting out of this awful dungeon.
+Key 2 - A glowing red key that looks like it could help you open that darn door.
+Key 3 - A small green key decorated with etchings of vines, it should work on the third lock on the door.
+Key 4 - A shiny yellow key, looks to be made of some sort of precious metal, the final puzzle piece to leaving this horrid place.
 Table - Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox, a bottle of water, and an unknown herb.
-Torch - Can be found in section 6 on the wall, can be lit.
+Torch - Can be found in section 6 on the wall, can be lit to reveal certain things you may have missed before.
 Matchbox - found on the table, can be used to light the torch.
 Bookshelf - Holds plenty of books, among them,
 Statue
