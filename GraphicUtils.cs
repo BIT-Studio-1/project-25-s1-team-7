@@ -157,5 +157,31 @@ namespace ConsoleApp1
 
             Console.CursorVisible = true;
         }
+
+        /* ANSI HELPERS */
+
+        public static void CursorVisible(bool visible)
+        {
+            if (visible)
+            {
+                Console.Write($"\u001b[?25h");
+            }
+            else
+            {
+                Console.Write($"\u001b[?25l");
+            }
+        }
+
+        public static void ClearScreen(bool clearScrollBackBuffer = false)
+        {
+            if (clearScrollBackBuffer)
+            {
+                Console.Write($"\u001b[3J" + "\u001b[2J");
+            }
+            else
+            {
+                Console.Write($"\u001b[2J");
+            }
+        }
     }
 }
