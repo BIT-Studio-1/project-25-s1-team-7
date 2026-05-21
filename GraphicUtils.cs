@@ -157,5 +157,19 @@ namespace ConsoleApp1
 
             Console.CursorVisible = true;
         }
+
+        /* ANSI HELPERS */
+
+        public static void CursorVisible(bool visible)
+        {
+            if (visible)
+            {
+                Console.Write($"\u001b[?25h");
+            }
+            else
+            {
+                Console.Write($"\u001b[?25l");
+            }
+        }
     }
 }
