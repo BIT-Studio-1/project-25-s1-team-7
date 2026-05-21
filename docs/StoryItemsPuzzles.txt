@@ -21,7 +21,7 @@ Torch - Can be found in section 6 on the wall, can be lit to reveal certain thin
 Matchbox - found on the table, can be used to light the torch.
 Crate - sealed, can open it with sword, has unknown herbs inside.
 Sword - found in Chest, very pointy, ouch.
-Chest - unlocked
+Chest - unlocked and has heaps of turnips, not useful, but there seems to be a sword in there too, weird place to keep it but hey.
 Bookshelf - Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide', and a personal journal, potentially belonging to the sorcerer.
 Book on being wicked - contains text that says 'Mwahahahahahaha' and that's it.
 brewing up broth - a cooking guide - contains many soupy recipes
@@ -38,8 +38,9 @@ Cauldron
 
 Puzzles:
 To unlock key 1, you need to have the matchbox and torch, light the torch to see better, and you will be able to see the key hanging up on the wall.
-To unlock key 2, You need to answer a riddle, given to you by the statue, could be quite funny to make it 'what is the binary answer for 20 - 14?' answer is '0110' reference to Vic lol
-
+To unlock key 2, you need to answer a question, given to you by the statue, could be quite funny to make it 'what is the binary answer for 20 - 14?' answer is '0110' reference to Vic lol
+To unlock key 3, (riddle including components from journal and some other stuff)
+To unlock key 4, (this will be a cauldron puzzle)
 
 
 
@@ -68,8 +69,8 @@ NPC
 
 
 section 4 has:
-
-
+Chest
+Sword
 
 section 5 has:
 Table
@@ -82,7 +83,7 @@ Key 1
 
 
 section 7 has:
-
+Cauldron
 
 
 section 8 has:
@@ -91,6 +92,7 @@ Key 2
 
 
 section 9 has:
-
+Crate
+Unknown herbs
 
 
