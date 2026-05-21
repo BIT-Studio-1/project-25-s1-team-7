@@ -3,7 +3,7 @@ Name of Game - The Cursed Castle
 
 IDEA (NPC could give more backstory when you talk to them? gives the player context and helps worldbuilding)
 
-Backstory - You wake up in a dingy dungeon that was ruled by an evil sorcerer years ago, eventually overthrown by the King's Royal Guard, leaving the castle abandoned to decay. Legend has it the evil sorcerer survived and can be found in the darkest corners of the castle. Maybe that's who brought you here? But why? Who are you? Why would the sorcerer want to kidnap you?
+Backstory - You wake up in a dingy dungeon in a castle that was ruled by an evil sorcerer years ago, eventually overthrown by the King's Royal Guard, leaving the castle abandoned to decay. Legend has it the evil sorcerer survived and can be found in the darkest corners of the castle. Maybe that's who brought you here? But why? Who are you? Why would the sorcerer want to kidnap you?
 
 Player is a the highest ranking Knight in the King's Royal Guard, highly trusted by the entire Royal Family. The evil sorcerer is trying to rise to power once more, he has kidnapped the player to send shockwaves through the kingdom and weaken the Royal Guard, who are they without their Commander?
 
@@ -16,11 +16,17 @@ Key 1 - A mysterious blue key that is the first step to getting out of this awfu
 Key 2 - A glowing red key that looks like it could help you open that darn door.
 Key 3 - A small green key decorated with etchings of vines, it should work on the third lock on the door.
 Key 4 - A shiny yellow key, looks to be made of some sort of precious metal, the final puzzle piece to leaving this horrid place.
-Table - Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox, a bottle of water, and an unknown herb.
+Table - Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox and a bottle of water.
 Torch - Can be found in section 6 on the wall, can be lit to reveal certain things you may have missed before.
 Matchbox - found on the table, can be used to light the torch.
-Bookshelf - Holds plenty of books, among them,
-Statue
+Crate - sealed, can open it with sword, has unknown herbs inside.
+Sword - found in Chest, very pointy, ouch.
+Chest - unlocked
+Bookshelf - Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide', and a personal journal, potentially belonging to the sorcerer.
+Book on being wicked - contains text that says 'Mwahahahahahaha' and that's it.
+brewing up broth - a cooking guide - contains many soupy recipes
+journal - 
+Statue - Holding key 2, seems to be enchanted as its eyes follow you around the room.
 Cauldron
 
 
@@ -32,7 +38,8 @@ Cauldron
 
 Puzzles:
 To unlock key 1, you need to have the matchbox and torch, light the torch to see better, and you will be able to see the key hanging up on the wall.
-To unlock key 2, 
+To unlock key 2, You need to answer a riddle, given to you by the statue, could be quite funny to make it 'what is the binary answer for 20 - 14?' answer is '0110' reference to Vic lol
+
 
 
 
@@ -46,7 +53,7 @@ Room outline:
 7           8           9
 
 section 1 has:
-
+Bookshelf w/ books
 
 
 
@@ -67,8 +74,7 @@ section 4 has:
 section 5 has:
 Table
 Matchbox
-Bottle of Water
-Unknown Herb	
+Bottle of Water	
 
 section 6 has:
 Torch
@@ -80,6 +86,8 @@ section 7 has:
 
 
 section 8 has:
+Statue
+Key 2
 
 
 section 9 has:

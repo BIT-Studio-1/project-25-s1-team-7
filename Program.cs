@@ -19,7 +19,7 @@ namespace ConsoleApp1
             Console.OutputEncoding = Encoding.UTF8;
 
             // Assets Path
-            string PathAssets = @"..\..\..\assets\";
+            string PathAssets = @"..\..\..\assets\";            
 
             /* Do not change this path, it should
                work on any machine. */
@@ -34,7 +34,6 @@ namespace ConsoleApp1
 
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
-
             world.DisplayCurrentRoom();
             bool running = true;
             while (running) // Game loop, will continue until player types 'quit'
