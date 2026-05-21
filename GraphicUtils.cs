@@ -206,6 +206,11 @@ namespace ConsoleApp1
             }
         }
 
+        public static void InvertColor()
+        {
+            Console.Write("\u001b[7m");
+        }
+
         public static void ResetGraphics()
         {
             Console.Write($"\u001b[0m");
