@@ -36,11 +36,11 @@ namespace ConsoleApp1
             //_mapGrid[1, 2] = new Room("Room name here", "Room description here", 1);
 
             _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "entrance_hall.txt"); //Place compartment ASCII in net8.0 folder (project-25-s1-team-7\bin\Debug\net8.0)
-            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "");
-            _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "");
+            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "stone_cell.txt");
+            _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "dusty_library.txt");
 
             _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, "");
-            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, "");
+            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armor stand in the corner.", 3, "");
             _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, "");
 
             _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, "");
