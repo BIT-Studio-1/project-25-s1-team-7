@@ -1,7 +1,7 @@
 Story line:
 Name of Game - The Cursed Castle
 
-IDEA (Npc could give more backstory when you talk to them? gives the player context and helps worldbuilding)
+IDEA (NPC could give more backstory when you talk to them? gives the player context and helps worldbuilding)
 
 Backstory - You wake up in a dingy dungeon that was ruled by an evil sorcerer years ago, eventually overthrown by the King's Royal Guard, leaving the castle abandoned to decay. Legend has it the evil sorcerer survived and can be found in the darkest corners of the castle. Maybe that's who brought you here? But why? Who are you? Why would the sorcerer want to kidnap you?
 
@@ -10,10 +10,18 @@ Player is a the highest ranking Knight in the King's Royal Guard, highly trusted
 NPC could be an old Minion or apprentice of the evil sorcerer, locked up in the same dungeon for not wanting to help the sorcerer rise up again, who gives you backstory and insight into how to escape, he knows the castle like the back of his hand.
 
 
-
 Items + Description:
 
-
+Key 1 - A mysterious 
+Key 2
+Key 3
+Key 4
+Table - Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox, a bottle of water, and an unknown herb.
+Torch - Can be found in section 6 on the wall, can be lit.
+Matchbox - found on the table, can be used to light the torch.
+Bookshelf - Holds plenty of books, among them,
+Statue
+Cauldron
 
 
 
@@ -23,3 +31,58 @@ Items + Description:
 
 
 Puzzles:
+To unlock key 1, you need to have the matchbox and torch, light the torch to see better, and you will be able to see the key hanging up on the wall.
+To unlock key 2, 
+
+
+
+Room outline:
+1           2           3
+
+
+4           5           6
+
+
+7           8           9
+
+section 1 has:
+
+
+
+
+section 2 has:
+Exit door
+
+
+
+section 3 has:
+NPC
+
+
+
+section 4 has:
+
+
+
+section 5 has:
+Table
+Matchbox
+Bottle of Water
+Unknown Herb	
+
+section 6 has:
+Torch
+Key 1
+
+
+section 7 has:
+
+
+
+section 8 has:
+
+
+section 9 has:
+
+
+
