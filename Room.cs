@@ -55,7 +55,7 @@ namespace ConsoleApp1
                 Console.WriteLine("You have escaped the room! Congratulations!");
                 isEscaped = true;
                 return true;
-            }
+            }  
         }
     }
 }
