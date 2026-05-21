@@ -183,5 +183,15 @@ namespace ConsoleApp1
                 Console.Write($"\u001b[2J");
             }
         }
+
+        public static void SetForegroundColor(int r, int g, int b)
+        {
+            Console.Write($"\u001b[38;2;{r};{g};{b}m");
+        }
+
+        public static void SetBackgroundColor(int r, int g, int b)
+        {
+            Console.Write($"\u001b[48;2;{r};{g};{b}m");
+        }
     }
 }
