@@ -70,14 +70,11 @@ namespace ConsoleApp1
         {
             var directions = new List<string>();
 
-            if (_playerRow > 0) directions.Add("North");  // room exists above
-            if (_playerRow < 2) directions.Add("South");  // room exists below
-            if (_playerCol > 0) directions.Add("West");   // room exists to the left
-            if (_playerCol < 2) directions.Add("East");   // room exists to the right
-
-            Console.WriteLine("Choose a direction to travel (north, south, east, west");
-
-            string chosenDirection = Console.ReadLine().ToLower();
+            if (_playerRow > 0) directions.Add("north");  // room exists above
+            if (_playerRow < 2) directions.Add("south");  // room exists below
+            if (_playerCol > 0) directions.Add("west");   // room exists to the left
+            if (_playerCol < 2) directions.Add("east");   // room exists to the right
+            return directions;
 
 
 
@@ -92,16 +89,16 @@ namespace ConsoleApp1
             {
                 switch (direction)
                 {
-                    case "North":
+                    case "north":
                         _playerRow--;
                         break;
-                    case "South":
+                    case "south":
                         _playerRow++;
                         break;
-                    case "West":
+                    case "west":
                         _playerCol--;
                         break;
-                    case "East":
+                    case "east":
                         _playerCol++;
                         break;
                     default:

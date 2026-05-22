@@ -20,7 +20,7 @@ namespace ConsoleApp1
         {
             Name = name;
             Description = description;
-            Difficulty = difficulty;
+            Difficulty = difficulty; //Unused currently
             scenePath = ScenePath;
         }
         public void displayRoom()
