@@ -75,9 +75,6 @@ namespace ConsoleApp1
             if (_playerCol > 0) directions.Add("west");   // room exists to the left
             if (_playerCol < 2) directions.Add("east");   // room exists to the right
             return directions;
-
-
-
         }
 
         public void MovePlayer(string direction)
