@@ -83,6 +83,18 @@ namespace ConsoleApp1
 
             Console.WriteLine($"Current room: {CurrentRoom.Name}");
             Console.WriteLine(CurrentRoom.Description);
+            if (CurrentRoom.Items.Count > 0)
+            {
+                Console.WriteLine("You see the following items:");
+                foreach (var item in CurrentRoom.Items)
+                {
+                    Console.WriteLine($"- {item.Name}: {item.Description}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no items in this room.");
+            }
             DisplayAvailableDirections();
         }
 
