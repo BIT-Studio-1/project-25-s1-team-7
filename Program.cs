@@ -33,17 +33,19 @@ namespace ConsoleApp1
 
             Console.Clear();
 
-            Renderer renderer = new Renderer();
-
-            renderer.DrawBox(0, 0, Console.WindowWidth, Console.WindowHeight);
-
-            Console.SetCursorPosition(2, 1);
-
             Console.Write("Enter your name: ");
             string playerName = Console.ReadLine() ?? "";
             Player player = new(playerName);
 
             Console.Clear();
+
+            // It's pretty rough right now, need to create some methods
+            // for putting text in the actual panels to replace Console.WriteLine()
+            Renderer renderer = new Renderer();
+
+            renderer.RenderMainInterface();
+
+            Console.SetCursorPosition(2, 1);
 
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
