@@ -73,16 +73,18 @@ namespace ConsoleApp1
         }
 
 
-        public void DisplayCurrentRoom() //simple room display method. Can be called in main script to show player their current location and room description.
+        public void DisplayCurrentRoom()
         {
             Console.Clear();
-            RenderFrame(CurrentRoom.scenePath, 0);
+
+            // Only render ASCII art if this room has a scene file
+            if (!string.IsNullOrEmpty(CurrentRoom.scenePath) && File.Exists(CurrentRoom.scenePath)) // Check if the file exists to avoid errors
+            {
+                RenderFrame(CurrentRoom.scenePath, 0);
+            }
 
             Console.WriteLine($"Current room: {CurrentRoom.Name}");
             Console.WriteLine(CurrentRoom.Description);
-
-            
-
         }
 
         //Returns list of strings of available directions to travel. 
