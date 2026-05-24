@@ -40,7 +40,7 @@ namespace ConsoleApp1
                 switch (command)
                 {
                     case "help":
-                        Console.WriteLine("Available commands: look, move, inventory, quit");
+                        Console.WriteLine("Available commands: look, move, pickup, inventory, escape, quit");
                         break;
                     case "look":
                         world.DisplayCurrentRoom();
@@ -68,6 +68,12 @@ namespace ConsoleApp1
                         break;
                     case "inventory":
                         player.showInventory();
+                        break;
+                    case "escape":
+                        if (world.CurrentRoom.AttemptEscape(player))
+                        {
+                            running = false;
+                        }
                         break;
                     case "quit":
                     case "exit":
