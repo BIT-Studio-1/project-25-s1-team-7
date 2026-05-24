@@ -20,6 +20,15 @@ namespace ConsoleApp1
                 MainInterface();
             }
 
+            public void RenderMainInterface()
+            {
+                Console.Clear();
+
+                DrawPanel(InputPanel);
+                DrawPanel(MapPanel);
+                DrawPanel(MenuPanel);
+            }
+
             private void MainInterface()
             {
                 int consoleWidth = Console.WindowWidth;
@@ -49,6 +58,14 @@ namespace ConsoleApp1
 
                 Console.SetCursorPosition(x, y + height - 1);
                 Console.Write("└" + new string('─', width - 2) + "┘");
+            }
+
+            public void DrawPanel(Panel panel)
+            {
+                DrawBox(panel.X, panel.Y, panel.Width, panel.Height);
+
+                Console.SetCursorPosition(panel.X + 2, panel.Y);
+                Console.Write($" {panel.Title} ");
             }
         }
 
