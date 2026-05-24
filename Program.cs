@@ -5,10 +5,6 @@ using static ConsoleApp1.GraphicUtils;
 using static ConsoleApp1.SoundUtils;
 
 // Game classes
-using static ConsoleApp1.Item;
-using static ConsoleApp1.Room;
-using static ConsoleApp1.Player;
-using static ConsoleApp1.World;
 
 namespace ConsoleApp1
 {
