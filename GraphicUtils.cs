@@ -35,6 +35,21 @@ namespace ConsoleApp1
                 MapPanel = new Panel(leftWidth, 0, rightWidth, sceneHeight, "Map");
                 MenuPanel = new Panel(leftWidth, sceneHeight, rightWidth, menuHeight, "Menu");
             }
+
+            public void DrawBox(int x, int y, int width, int height)
+            {
+                Console.SetCursorPosition(x, y);
+                Console.Write("┌" + new string('─', width - 2) + "┐");
+
+                for (int row = 1; row < height - 1; row++)
+                {
+                    Console.SetCursorPosition(x, y + row);
+                    Console.Write("│" + new string(' ', width - 2) + "│");
+                }
+
+                Console.SetCursorPosition(x, y + height - 1);
+                Console.Write("└" + new string('─', width - 2) + "┘");
+            }
         }
 
         public class Panel
