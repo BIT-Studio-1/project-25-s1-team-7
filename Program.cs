@@ -58,6 +58,22 @@ namespace ConsoleApp1
                         Console.Write("Enter direction (north, south, east, west): ");
                         string direction = Console.ReadLine().Trim().ToLower();
                         world.MovePlayer(direction);
+                        world.DisplayCurrentRoom();
+                        break;
+                    case "pickup":
+                        Console.Write("What do you want to pick up? ");
+                        string itemName = Console.ReadLine().Trim().ToLower();
+                        Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName);
+                        if (foundItem != null)
+                        {
+                            player.PickUp(foundItem);
+                            world.CurrentRoom.Items.Remove(foundItem);
+                            Console.WriteLine($"You picked up: {foundItem.Name}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("That item is not here.");
+                        }
                         break;
                     case "inventory":
                         player.showInventory();
