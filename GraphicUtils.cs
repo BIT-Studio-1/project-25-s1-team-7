@@ -9,6 +9,67 @@ namespace ConsoleApp1
 {
     internal class GraphicUtils
     {
+        public class Renderer
+        {
+            public Panel InputPanel { get; private set; }
+            public Panel MapPanel { get; private set; }
+            public Panel MenuPanel  { get; private set; }
+
+            public Renderer()
+            {
+                MainInterface();
+            }
+
+            private void MainInterface()
+            {
+                int consoleWidth = Console.WindowWidth;
+                int consoleHeight = Console.WindowHeight;
+
+                int leftWidth = consoleWidth / 2;
+                int rightWidth = consoleWidth - leftWidth;
+
+                int sceneHeight = consoleHeight / 2;
+                int menuHeight = consoleHeight - sceneHeight;
+
+                InputPanel = new Panel(0, 0, leftWidth, consoleHeight, "Input");
+                MapPanel = new Panel(leftWidth, 0, rightWidth, sceneHeight, "Map");
+                MenuPanel = new Panel(leftWidth, sceneHeight, rightWidth, menuHeight, "Menu");
+            }
+
+            public void DrawBox(int x, int y, int width, int height)
+            {
+                Console.SetCursorPosition(x, y);
+                Console.Write("┌" + new string('─', width - 2) + "┐");
+
+                for (int row = 1; row < height - 1; row++)
+                {
+                    Console.SetCursorPosition(x, y + row);
+                    Console.Write("│" + new string(' ', width - 2) + "│");
+                }
+
+                Console.SetCursorPosition(x, y + height - 1);
+                Console.Write("└" + new string('─', width - 2) + "┘");
+            }
+        }
+
+        public class Panel
+        {
+            public int X { get; }
+            public int Y { get; }
+            public int Width { get; }
+            public int Height { get; }
+            public string Title { get; }
+
+            public Panel(int x, int y, int width, int height, string title)
+            {
+                X = x;
+                Y = y;
+                Width = width;
+                Height = height;
+                Title = title;
+            }
+        }
+
         /// <summary>
         /// Writes the contents of a text file to the console.
         /// </summary>
