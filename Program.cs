@@ -33,9 +33,17 @@ namespace ConsoleApp1
 
             Console.Clear();
 
+            Renderer renderer = new Renderer();
+
+            renderer.DrawBox(0, 0, Console.WindowWidth, Console.WindowHeight);
+
+            Console.SetCursorPosition(2, 1);
+
             Console.Write("Enter your name: ");
             string playerName = Console.ReadLine() ?? "";
             Player player = new(playerName);
+
+            Console.Clear();
 
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");

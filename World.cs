@@ -15,7 +15,7 @@ namespace ConsoleApp1
         private Room[,] _mapGrid;
         //Player starts in bottom middle square of 3x3 grid.
         private int _playerRow = 0;
-        private int _playerCol= 1;
+        private int _playerCol = 1;
 
 
 
@@ -41,7 +41,7 @@ namespace ConsoleApp1
             _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, "");
             _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, "");
             _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, "");
-            
+
             //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
             _mapGrid[0, 0].isLocked = true; // Exit room, needs all 4 keys
             _mapGrid[1, 0].isLocked = true; // Flooded basement locked until player finds key in guard's quarters. Can add more locked rooms and keys as needed.
@@ -139,4 +139,5 @@ namespace ConsoleApp1
             var directions = GetAvailableDirections();
             Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
         }
+    }
 }
