@@ -19,17 +19,26 @@ namespace ConsoleApp1
             Console.OutputEncoding = Encoding.UTF8;
 
             // Assets Path
-            string PathAssets = @"..\..\..\assets\";            
+            string PathAssets = @"..\..\..\assets\";
 
             /* Do not change this path, it should
                work on any machine. */
+            
+            Teleprinter("""
+                Hello! Before you start, please full screen the console for the best experience.
+
+                If you don't, things might break!
+
+                Press any key to continue...
+
+                """, 5);
+
+            Console.ReadKey(true);
+
+            Console.Clear();
 
             Console.Write("Enter your name: ");
-            SetBlinky(); // New blinky mode
-            SetBackgroundColor(255, 255, 0);
-            InvertColor();
-            string playerName = Console.ReadLine();
-            ResetGraphics();
+            string playerName = Console.ReadLine() ?? "";
             Player player = new(playerName);
 
             //TODO: Load World
