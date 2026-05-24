@@ -85,6 +85,7 @@ namespace ConsoleApp1
 
             Console.WriteLine($"Current room: {CurrentRoom.Name}");
             Console.WriteLine(CurrentRoom.Description);
+            DisplayAvailableDirections();
         }
 
         //Returns list of strings of available directions to travel. 
@@ -133,5 +134,9 @@ namespace ConsoleApp1
             }
         } // Will need to create a sensitivity check for player input in main script to ensure they are entering directions in the correct format.
           // Could also add a method here to convert player input to the correct format if they enter it in a different way.
-    }
+        public void DisplayAvailableDirections()
+        {
+            var directions = GetAvailableDirections();
+            Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
+        }
 }
