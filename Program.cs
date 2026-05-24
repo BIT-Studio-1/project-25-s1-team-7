@@ -49,6 +49,7 @@ namespace ConsoleApp1
                         Console.Write("Enter direction (north, south, east, west): ");
                         string direction = Console.ReadLine().Trim().ToLower();
                         world.MovePlayer(direction);
+                        world.DisplayCurrentRoom();
                         break;
                     case "inventory":
                         player.showInventory();
