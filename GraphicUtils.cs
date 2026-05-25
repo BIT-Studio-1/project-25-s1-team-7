@@ -19,7 +19,7 @@ namespace ConsoleApp1
             private static readonly Regex AnsiRegex = new(@"\x1B\[[0-9;]*m", RegexOptions.Compiled);
 
             /* If you have not heard of regular expressions before and want to
-             * know how the above code works, check out the .NET documention:
+             * know how the above code works, check out the .NET documentation:
              *
              * https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions
              *
