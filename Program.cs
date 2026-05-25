@@ -33,7 +33,7 @@ namespace ConsoleApp1
 
             ConsoleFormatter.Clear();
 
-            Renderer.Render(PathAssets + "TestFile.txt", 2500);
+            Renderer.Render(PathAssets, 1000, true);
 
             ConsoleFormatter.Clear(true);
 

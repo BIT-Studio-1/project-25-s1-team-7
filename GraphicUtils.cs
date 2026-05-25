@@ -68,10 +68,7 @@ namespace ConsoleApp1
                         Console.Write(formattedLines[i]);
                     }
 
-                    if (delay > 0)
-                    {
-                        Thread.Sleep(delay);
-                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -79,6 +76,11 @@ namespace ConsoleApp1
                 }
                 finally
                 {
+                    if (delay > 0)
+                    {
+                        Thread.Sleep(delay);
+                    }
+
                     ConsoleFormatter.SetCursor(true);
                     ConsoleFormatter.Clear(true);
                 }
@@ -106,25 +108,16 @@ namespace ConsoleApp1
                         return;
                     }
 
-                    string[] initialFrameLines = File.ReadAllLines(frames[0]);
-
-                    for (int i = 0; i < initialFrameLines.Length; i++)
-                    {
-                        initialFrameLines[i] = FormatLine(initialFrameLines[i]);
-                    }
+                    string[] initialFrameLines = File.ReadAllLines(frames[0])
+                        .Select(FormatLine)
+                        .ToArray();
 
                     int frameHeight = initialFrameLines.Length;
-                    int frameWidth = 0;
 
-                    for (int i = 0; i < initialFrameLines.Length; i++)
-                    {
-                        int visibleLength = GetLineLength(initialFrameLines[i]);
-
-                        if (visibleLength > frameWidth)
-                        {
-                            frameWidth = visibleLength;
-                        }
-                    }
+                    int frameWidth = initialFrameLines
+                        .Select(GetLineLength)
+                        .DefaultIfEmpty(0)
+                        .Max();
 
                     int top = (Console.WindowHeight - frameHeight) / 2;
                     int left = (Console.WindowWidth - frameWidth) / 2;
@@ -138,29 +131,19 @@ namespace ConsoleApp1
                     {
                         foreach (string frame in frames)
                         {
-                            string[] lines = File.ReadAllLines(frame);
+                            string[] formattedLines = File.ReadAllLines(frame)
+                                .Select(FormatLine)
+                                .ToArray();
 
-                            for (int i = 0; i < lines.Length; i++)
+                            for (int i = 0; i < formattedLines.Length; i++)
                             {
-                                string formattedLine = FormatLine(lines[i]);
-
                                 int y = top + i;
 
                                 if (y >= Console.WindowHeight)
-                                {
                                     break;
-                                }
 
                                 Console.SetCursorPosition(left, y);
-                                Console.Write(formattedLine);
-
-                                int visibleLength = GetLineLength(formattedLine);
-                                int spacesToClear = frameWidth - visibleLength;
-
-                                if (spacesToClear > 0)
-                                {
-                                    Console.Write(new string(' ', spacesToClear));
-                                }
+                                Console.Write(formattedLines[i]);
                             }
 
                             if (delay > 0)
