@@ -62,7 +62,7 @@ namespace ConsoleApp1
                         world.DisplayCurrentRoom();
                         break;
                     case "test":
-                        Renderer.Render(PathAssets + "TestFile.txt", 2500);
+                        Renderer.Render(PathAssets + "entrance_hall.txt", 2500);
                         ConsoleFormatter.Clear();
                         break;
                     case "pickup":
