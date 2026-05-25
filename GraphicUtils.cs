@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -11,7 +12,18 @@ namespace ConsoleApp1
     {
         public class Renderer
         {
+            /* Create a regex to match the ANSI escape codes so we can
+             * detect and strip them from lines when calculating the 
+             * length of each line for centering. */
 
+            private static readonly Regex AnsiRegex = new(@"\x1B\[[0-9;]*m", RegexOptions.Compiled);
+
+            /* If you have not heard of regular expressions before and want to
+             * know how the above code works, check out the .NET documention:
+             *
+             * https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions
+             *
+             * Good luck and have fun... it's like reading hieroglyphics. */
         }
 
         /// <summary>
