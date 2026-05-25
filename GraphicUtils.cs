@@ -49,7 +49,53 @@ namespace ConsoleApp1
 
         public class ConsoleFormatter
         {
+            public static void SetForegroundColor(int r, int g, int b)
+            {
+                Console.Write($"\u001b[38;2;{r};{g};{b}m");
+            }
 
+            public static void SetBackgroundColor(int r, int g, int b)
+            {
+                Console.Write($"\u001b[48;2;{r};{g};{b}m");
+            }
+
+            public static void Clear(bool scrollBuffer = false)
+            {
+                if (scrollBuffer)
+                {
+                    Console.Write("\u001b[3J");
+                }
+
+                Console.Write("\u001b[2J");
+                Console.SetCursorPosition(0, 0);
+            }
+
+            public static void Restore()
+            {
+                Console.Write($"\u001b[0m");
+            }
+
+            public static void SetCursor(bool visible)
+            {
+                if (visible)
+                {
+                    Console.Write($"\u001b[?25h");
+                }
+                else
+                {
+                    Console.Write($"\u001b[?25l");
+                }
+            }
+
+            public static void SetCursor(int style)
+            {
+                if (style > 6)
+                {
+                    throw new ArgumentException("Invalid cursor style. Please use a value between 0 and 6.");
+                }
+
+                Console.Write($"\u001b[{style} q");
+            }
         }
 
         /// <summary>
@@ -132,64 +178,6 @@ namespace ConsoleApp1
             }
 
             Console.CursorVisible = true;
-        }
-
-        /* ANSI HELPERS */
-
-        public static void CursorVisible(bool visible)
-        {
-            if (visible)
-            {
-                Console.Write($"\u001b[?25h");
-            }
-            else
-            {
-                Console.Write($"\u001b[?25l");
-            }
-        }
-
-        public static void ClearScreen(bool clearScrollBackBuffer = false)
-        {
-            if (clearScrollBackBuffer)
-            {
-                Console.Write($"\u001b[3J" + "\u001b[2J");
-            }
-            else
-            {
-                Console.Write($"\u001b[2J");
-            }
-        }
-
-        public static void SetForegroundColor(int r, int g, int b)
-        {
-            Console.Write($"\u001b[38;2;{r};{g};{b}m");
-        }
-
-        public static void SetBackgroundColor(int r, int g, int b)
-        {
-            Console.Write($"\u001b[48;2;{r};{g};{b}m");
-        }
-
-        public static void SetBlinky(bool modeRapid = false)
-        {
-            if (modeRapid)
-            {
-                Console.Write("\u001b[6m");
-            }
-            else
-            {
-                Console.Write("\u001b[5m");
-            }
-        }
-
-        public static void InvertColor()
-        {
-            Console.Write("\u001b[7m");
-        }
-
-        public static void ResetGraphics()
-        {
-            Console.Write($"\u001b[0m");
         }
     }
 }
