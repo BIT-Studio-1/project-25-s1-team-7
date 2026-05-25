@@ -39,21 +39,12 @@ namespace ConsoleApp1
 
             Console.Clear();
 
-            // It's pretty rough right now, need to create some methods
-            // for putting text in the actual panels to replace Console.WriteLine()
-            Renderer renderer = new Renderer();
-
-            renderer.RenderMainInterface();
-
-            Console.SetCursorPosition(2, 1);
-
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
             world.DisplayCurrentRoom();
             bool running = true;
             while (running) // Game loop, will continue until player types 'quit'
             {
-                Console.WriteLine("What do you want to do? (type 'help' for commands)\n");
                 Console.Write("> ");
                 string command = Console.ReadLine().Trim().ToLower();
                 switch (command)
