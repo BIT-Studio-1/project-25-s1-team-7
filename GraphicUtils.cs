@@ -49,19 +49,28 @@ namespace ConsoleApp1
                         .DefaultIfEmpty(0)
                         .Max();
 
+                    /* Formulas to calculate the position from which
+                     * we will start rendering the frame so that it
+                     * is centered in the console window. */
+
                     int top = (Console.WindowHeight - frameHeight) / 2;
                     int left = (Console.WindowWidth - frameWidth) / 2;
 
-                    if (top < 0 || left < 0)
+                    if (top < 0 || left < 0) // If the frame is too large, throw an exception.
                     {
                         throw new ArgumentException("Frame is too large for the console window.");
                     }
 
+                    /* I imagine we probably won't need to worry about
+                     * this because all our frames should be of the same
+                     * size but just in case a frame is too large to
+                     * fit in the console window, we can throw an exception. */
+
                     for (int i = 0; i < formattedLines.Length; i++)
                     {
-                        int y = top + i;
+                        int y = top + i; // Increment the y position for each line.
 
-                        if (y >= Console.WindowHeight)
+                        if (y >= Console.WindowHeight) // This shouldn't happen if the frame fits in the console, but just in case.
                             break;
 
                         Console.SetCursorPosition(left, y);
@@ -76,10 +85,15 @@ namespace ConsoleApp1
                 }
                 finally
                 {
+
+                    // If a delay is given, do that here.
                     if (delay > 0)
                     {
                         Thread.Sleep(delay);
                     }
+
+                    /* If there is an error, we need to restore
+                     * the cursor and screen here */
 
                     ConsoleFormatter.SetCursor(true);
                     ConsoleFormatter.Clear(true);
@@ -107,6 +121,9 @@ namespace ConsoleApp1
                         Console.WriteLine("No frames found.");
                         return;
                     }
+
+                    /* All frames should be of the same size so I'm only going
+                     to bother checking the dimensions of the first frame */
 
                     string[] initialFrameLines = File.ReadAllLines(frames[0])
                         .Select(FormatLine)
@@ -165,11 +182,18 @@ namespace ConsoleApp1
                 }
             }
 
+            /* Removes ANSI markup from a line and
+             * replaces it with ACTUAL escape codes */
+
             private static string FormatLine(string line)
             {
                 return line.Replace("[ESC]", "\x1b")
                            .Replace("[/]", "\x1b[0m");
             }
+
+            /* Strips ANSI from a line and returns the length of the line
+             * without the codes. This is used to calculate the width of
+             * each line for centering purposes. */
 
             private static int GetLineLength(string line)
             {
@@ -190,7 +214,7 @@ namespace ConsoleApp1
                 Console.Write($"\u001b[48;2;{r};{g};{b}m");
             }
 
-            public static void Clear(bool scrollBuffer = false)
+            public static void Clear(bool scrollBuffer = true)
             {
                 if (scrollBuffer)
                 {
@@ -244,20 +268,20 @@ namespace ConsoleApp1
 
             foreach (string line in stringInput.Split('\n'))
             {
-                // Ignore comments
+                // Ignore comments.
                 if (line.StartsWith("//"))
                 {
                     continue;
                 }
 
-                // Print each character with a delay
+                // Print each character with a delay.
                 foreach (char c in line)
                 {
                     Console.Write(c);
                     Thread.Sleep(delay);
                 }
 
-                // Print a newline after each line
+                // Print a newline after each line.
                 Thread.Sleep(delay);
                 Console.Write("\n");
             }
@@ -285,20 +309,20 @@ namespace ConsoleApp1
 
                 foreach (string line in textInput.Split('\n'))
                 {
-                    // Ignore comments
+                    // Ignore comments.
                     if (line.StartsWith("//"))
                     {
                         continue;
                     }
 
-                    // Print each character with a delay
+                    // Print each character with a delay.
                     foreach (char c in line)
                     {
                         Console.Write(c);
                         Thread.Sleep(delay);
                     }
 
-                    // Print a newline after each line
+                    // Print a newline after each line.
                     Thread.Sleep(delay);
                     Console.Write("\n");
                 }
