@@ -19,7 +19,7 @@ namespace ConsoleApp1
 
             /* Do not change this path, it should
                work on any machine. */
-            
+
             Teleprinter("""
                 Hello! Before you start, please full screen the console for the best experience.
 
