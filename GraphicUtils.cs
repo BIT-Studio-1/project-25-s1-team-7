@@ -45,6 +45,18 @@ namespace ConsoleApp1
             {
                 return;
             }
+
+            private static string FormatAnsi(string line)
+            {
+                return line.Replace("[ESC]", "\x1b")
+                           .Replace("[/]", "\x1b[0m");
+            }
+
+            private static int GetVisibleLength(string line)
+            {
+                string withoutAnsi = AnsiRegex.Replace(line, "");
+                return withoutAnsi.Length;
+            }
         }
 
         public class ConsoleFormatter
