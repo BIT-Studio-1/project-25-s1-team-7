@@ -10,6 +10,9 @@ namespace ConsoleApp1
 {
     internal class GraphicUtils
     {
+        /// <summary>
+        /// Handles rendering files to the console.
+        /// </summary>
         public class Renderer
         {
             /* Create a regex to match the ANSI escape codes so we can
@@ -76,8 +79,6 @@ namespace ConsoleApp1
                         Console.SetCursorPosition(left, y);
                         Console.Write(formattedLines[i]);
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -85,7 +86,6 @@ namespace ConsoleApp1
                 }
                 finally
                 {
-
                     // If a delay is given, do that here.
                     if (delay > 0)
                     {
@@ -202,18 +202,37 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Handles formatting text and manipulating the cursor in the console.
+        /// </summary>
         public class ConsoleFormatter
         {
+            /// <summary>
+            /// Set the text foreground color to the given RGB values.
+            /// </summary>
+            /// <param name="r"></param>
+            /// <param name="g"></param>
+            /// <param name="b"></param>
             public static void SetForegroundColor(int r, int g, int b)
             {
                 Console.Write($"\u001b[38;2;{r};{g};{b}m");
             }
 
+            /// <summary>
+            /// Set the text background color to the given RGB values.
+            /// </summary>
+            /// <param name="r"></param>
+            /// <param name="g"></param>
+            /// <param name="b"></param>
             public static void SetBackgroundColor(int r, int g, int b)
             {
                 Console.Write($"\u001b[48;2;{r};{g};{b}m");
             }
 
+            /// <summary>
+            /// Clear the console and optionally the scroll buffer.
+            /// </summary>
+            /// <param name="scrollBuffer"></param>
             public static void Clear(bool scrollBuffer = true)
             {
                 if (scrollBuffer)
@@ -225,11 +244,18 @@ namespace ConsoleApp1
                 Console.SetCursorPosition(0, 0);
             }
 
+            /// <summary>
+            /// Restore all graphics.
+            /// </summary>
             public static void Restore()
             {
                 Console.Write($"\u001b[0m");
             }
 
+            /// <summary>
+            /// Toggle the visibility of the cursor.
+            /// </summary>
+            /// <param name="visible"></param>
             public static void SetCursor(bool visible)
             {
                 if (visible)
@@ -242,6 +268,11 @@ namespace ConsoleApp1
                 }
             }
 
+            /// <summary>
+            /// Set the cursor style.
+            /// </summary>
+            /// <param name="style"></param>
+            /// <exception cref="ArgumentException"></exception>
             public static void SetCursor(int style)
             {
                 if (style > 6)
