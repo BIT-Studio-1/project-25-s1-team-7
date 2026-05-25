@@ -24,6 +24,27 @@ namespace ConsoleApp1
              * https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions
              *
              * Good luck and have fun... it's like reading hieroglyphics. */
+
+            /// <summary>
+            /// Render a single Frame.
+            /// </summary>
+            /// <param name="filePath"></param>
+            /// <param name="delay"></param>
+            public static void Render(string filePath, int delay = 0)
+            {
+                return;
+            }
+
+            /// <summary>
+            /// Render a series of Frames.
+            /// </summary>
+            /// <param name="folderPath"></param>
+            /// <param name="delay"></param>
+            /// <param name="loop"></param>
+            public static void Render(string folderPath, int delay, bool loop)
+            {
+                return;
+            }
         }
 
         /// <summary>
