@@ -23,26 +23,7 @@ namespace ConsoleApp1
             Difficulty = difficulty; //Unused currently
             scenePath = ScenePath;
         }
-        public void displayRoom()
-        {
-            //rough example.
-            Console.WriteLine($"You are in {Name}.");
-            Console.WriteLine(Description);
-            if (Items.Count > 0)
-            {
-                Console.WriteLine("You see the following items:");
-                foreach (var item in Items)
-                {
-                    Console.WriteLine($"- {item.Name}: {item.Description}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("There are no items in this room.");
-            }
 
-
-        }
         public bool AttemptEscape(Player player)
         {
             if (isLocked) // will need to flesh out the logic for unlocking the door, this is just a placeholder.
