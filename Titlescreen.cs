@@ -31,6 +31,7 @@ public static class TitleScreen
     static void Main()
     {
         Console.CursorVisible = false;
+Console.WriteLine("HI");
 
         while (true)
         {
