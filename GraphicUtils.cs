@@ -47,6 +47,11 @@ namespace ConsoleApp1
             }
         }
 
+        public class ConsoleFormatter
+        {
+
+        }
+
         /// <summary>
         /// Writes the contents of a string one char at a time with a delay.
         /// </summary>
