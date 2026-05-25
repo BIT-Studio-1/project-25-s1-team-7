@@ -33,15 +33,11 @@ namespace ConsoleApp1
 
             ConsoleFormatter.Clear();
 
-            Renderer.Render(PathAssets + "TestFile.txt", 2500);
-
-            ConsoleFormatter.Clear(true);
-
             Console.Write("Enter your name: ");
             string playerName = Console.ReadLine() ?? "";
             Player player = new(playerName);
 
-            Console.Clear();
+            ConsoleFormatter.Clear();
 
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
@@ -64,6 +60,10 @@ namespace ConsoleApp1
                         string direction = Console.ReadLine().Trim().ToLower();
                         world.MovePlayer(direction);
                         world.DisplayCurrentRoom();
+                        break;
+                    case "test":
+                        Renderer.Render(PathAssets + "TestFile.txt", 2500);
+                        ConsoleFormatter.Clear();
                         break;
                     case "pickup":
                         Console.Write("What do you want to pick up? ");
