@@ -31,7 +31,11 @@ namespace ConsoleApp1
 
             Console.ReadKey(true);
 
-            Console.Clear();
+            ConsoleFormatter.Clear();
+
+            Renderer.Render(PathAssets + "TestFile.txt", 2500);
+
+            ConsoleFormatter.Clear(true);
 
             Console.Write("Enter your name: ");
             string playerName = Console.ReadLine() ?? "";

@@ -32,7 +32,56 @@ namespace ConsoleApp1
             /// <param name="delay"></param>
             public static void Render(string filePath, int delay = 0)
             {
-                return;
+                ConsoleFormatter.SetCursor(false);
+                ConsoleFormatter.Clear(true);
+
+                try
+                {
+                    string[] lines = File.ReadAllLines(filePath);
+
+                    string[] formattedLines = lines.Select(FormatLine)
+                        .ToArray();
+
+                    int frameHeight = formattedLines.Length;
+
+                    int frameWidth = formattedLines
+                        .Select(GetLineLength)
+                        .DefaultIfEmpty(0)
+                        .Max();
+
+                    int top = (Console.WindowHeight - frameHeight) / 2;
+                    int left = (Console.WindowWidth - frameWidth) / 2;
+
+                    if (top < 0 || left < 0)
+                    {
+                        throw new ArgumentException("Frame is too large for the console window.");
+                    }
+
+                    for (int i = 0; i < formattedLines.Length; i++)
+                    {
+                        int y = top + i;
+
+                        if (y >= Console.WindowHeight)
+                            break;
+
+                        Console.SetCursorPosition(left, y);
+                        Console.Write(formattedLines[i]);
+                    }
+
+                    if (delay > 0)
+                    {
+                        Thread.Sleep(delay);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    ConsoleFormatter.SetCursor(true);
+                    ConsoleFormatter.Clear(true);
+                }
             }
 
             /// <summary>
@@ -43,16 +92,103 @@ namespace ConsoleApp1
             /// <param name="loop"></param>
             public static void Render(string folderPath, int delay, bool loop)
             {
-                return;
+                ConsoleFormatter.SetCursor(false);
+                ConsoleFormatter.Clear(true);
+
+                try
+                {
+                    string[] frames = Directory.GetFiles(folderPath, "*_frame.txt");
+                    Array.Sort(frames);
+
+                    if (frames.Length == 0)
+                    {
+                        Console.WriteLine("No frames found.");
+                        return;
+                    }
+
+                    string[] initialFrameLines = File.ReadAllLines(frames[0]);
+
+                    for (int i = 0; i < initialFrameLines.Length; i++)
+                    {
+                        initialFrameLines[i] = FormatLine(initialFrameLines[i]);
+                    }
+
+                    int frameHeight = initialFrameLines.Length;
+                    int frameWidth = 0;
+
+                    for (int i = 0; i < initialFrameLines.Length; i++)
+                    {
+                        int visibleLength = GetLineLength(initialFrameLines[i]);
+
+                        if (visibleLength > frameWidth)
+                        {
+                            frameWidth = visibleLength;
+                        }
+                    }
+
+                    int top = (Console.WindowHeight - frameHeight) / 2;
+                    int left = (Console.WindowWidth - frameWidth) / 2;
+
+                    if (top < 0 || left < 0)
+                    {
+                        throw new ArgumentException("Frame is too large for the console window.");
+                    }
+
+                    do
+                    {
+                        foreach (string frame in frames)
+                        {
+                            string[] lines = File.ReadAllLines(frame);
+
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                string formattedLine = FormatLine(lines[i]);
+
+                                int y = top + i;
+
+                                if (y >= Console.WindowHeight)
+                                {
+                                    break;
+                                }
+
+                                Console.SetCursorPosition(left, y);
+                                Console.Write(formattedLine);
+
+                                int visibleLength = GetLineLength(formattedLine);
+                                int spacesToClear = frameWidth - visibleLength;
+
+                                if (spacesToClear > 0)
+                                {
+                                    Console.Write(new string(' ', spacesToClear));
+                                }
+                            }
+
+                            if (delay > 0)
+                            {
+                                Thread.Sleep(delay);
+                            }
+                        }
+                    }
+                    while (loop);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    ConsoleFormatter.SetCursor(true);
+                    ConsoleFormatter.Clear(true);
+                }
             }
 
-            private static string FormatAnsi(string line)
+            private static string FormatLine(string line)
             {
                 return line.Replace("[ESC]", "\x1b")
                            .Replace("[/]", "\x1b[0m");
             }
 
-            private static int GetVisibleLength(string line)
+            private static int GetLineLength(string line)
             {
                 string withoutAnsi = AnsiRegex.Replace(line, "");
                 return withoutAnsi.Length;
