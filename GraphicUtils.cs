@@ -13,7 +13,7 @@ namespace ConsoleApp1
         /// <summary>
         /// Handles rendering files to the console.
         /// </summary>
-        public class Renderer
+        public static class Renderer
         {
             /* Create a regex to match the ANSI escape codes so we can
              * detect and strip them from lines when calculating the 
@@ -205,7 +205,7 @@ namespace ConsoleApp1
         /// <summary>
         /// Handles formatting text and manipulating the cursor in the console.
         /// </summary>
-        public class ConsoleFormatter
+        public static class ConsoleFormatter
         {
             /// <summary>
             /// Set the text foreground color to the given RGB values.
@@ -213,7 +213,7 @@ namespace ConsoleApp1
             /// <param name="r"></param>
             /// <param name="g"></param>
             /// <param name="b"></param>
-            public static void SetForegroundColor(int r, int g, int b)
+            public static void ForegroundColor(int r, int g, int b)
             {
                 Console.Write($"\u001b[38;2;{r};{g};{b}m");
             }
@@ -224,9 +224,65 @@ namespace ConsoleApp1
             /// <param name="r"></param>
             /// <param name="g"></param>
             /// <param name="b"></param>
-            public static void SetBackgroundColor(int r, int g, int b)
+            public static void BackgroundColor(int r, int g, int b)
             {
                 Console.Write($"\u001b[48;2;{r};{g};{b}m");
+            }
+
+            /// <summary>
+            /// Enable bold text.
+            /// </summary>
+            public static void Bold()
+            {
+                Console.Write("\x1b[1m");
+            }
+
+            /// <summary>
+            /// Enable dim text.
+            /// </summary>
+            public static void Dim()
+            {
+                Console.Write("\x1b[2m");
+            }
+
+            /// <summary>
+            /// Enable italic text.
+            /// </summary>
+            public static void Italic()
+            {
+                Console.Write("\x1b[3m");
+            }
+
+            /// <summary>
+            /// Enable underlined text.
+            /// </summary>
+            public static void Underline()
+            {
+                Console.Write("\x1b[4m");
+            }
+
+            /// <summary>
+            /// Enable blinking text.
+            /// </summary>
+            public static void Blink()
+            {
+                Console.Write("\x1b[5m");
+            }
+
+            /// <summary>
+            /// Invert foreground and background colors.
+            /// </summary>
+            public static void Invert()
+            {
+                Console.Write("\x1b[7m");
+            }
+
+            /// <summary>
+            /// Enable strikethrough text.
+            /// </summary>
+            public static void Strikethrough()
+            {
+                Console.Write("\x1b[9m");
             }
 
             /// <summary>
@@ -288,7 +344,7 @@ namespace ConsoleApp1
             /// <exception cref="ArgumentException"></exception>
             public static void SetCursor(int style)
             {
-                if (style > 6)
+                if (style > 6 || style < 0)
                 {
                     throw new ArgumentException("Invalid cursor style. Please use a value between 0 and 6.");
                 }
