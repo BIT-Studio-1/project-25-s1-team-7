@@ -246,7 +246,7 @@ namespace ConsoleApp1
             }
 
             /// <summary>
-            /// Restore all graphics.
+            /// Restore all graphics back to default.
             /// </summary>
             public static void Restore()
             {
@@ -268,6 +268,18 @@ namespace ConsoleApp1
                     Console.Write($"\u001b[?25l");
                 }
             }
+
+            // ┌────────────────────┬───────┐
+            // │    Cursor Style    │ Value │
+            // ├────────────────────┼───────┤
+            // │ Default            │     0 │
+            // │ Blinking Block     │     1 │
+            // │ Steady Block       │     2 │
+            // │ Blinking Underline │     3 │
+            // │ Steady Underline   │     4 │
+            // │ Blinking Bar       │     5 │
+            // │ Steady Bar         │     6 │
+            // └────────────────────┴───────┘
 
             /// <summary>
             /// Set the cursor style.
