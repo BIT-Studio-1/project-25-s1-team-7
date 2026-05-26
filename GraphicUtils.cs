@@ -235,13 +235,14 @@ namespace ConsoleApp1
             /// <param name="scrollBuffer"></param>
             public static void Clear(bool scrollBuffer = true)
             {
+                // Move cursor to top-left and clear visible screen
+                Console.Write("\x1b[H\x1b[2J");
+
+                // Clear scrollback buffer
                 if (scrollBuffer)
                 {
-                    Console.Write("\u001b[3J");
+                    Console.Write("\x1b[3J");
                 }
-
-                Console.Write("\u001b[2J");
-                Console.SetCursorPosition(0, 0);
             }
 
             /// <summary>

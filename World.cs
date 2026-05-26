@@ -30,7 +30,7 @@ namespace ConsoleApp1
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
 
             //Section 1
-            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "entrance_hall.txt"); //Place compartment ASCII in net8.0 folder (project-25-s1-team-7\bin\Debug\net8.0)
+            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, "");
             _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, "");
             _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, "");
             //Section 2
@@ -139,6 +139,7 @@ namespace ConsoleApp1
             }
             else
             {
+                // I reckon it would be pretty funny if this hurt the player, maybe they take damage from walking into the wall?
                 Console.WriteLine("You walk into a solid stone wall.");
                 return;
             }
