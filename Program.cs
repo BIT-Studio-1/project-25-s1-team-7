@@ -8,17 +8,16 @@ using static ConsoleApp1.SoundUtils;
 
 namespace ConsoleApp1
 {
+    internal class GameConfig
+    {
+        public static readonly string PathAssets = @"..\..\..\assets\";
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-
-            // Assets Path
-            string PathAssets = @"..\..\..\assets\";
-
-            /* Do not change this path, it should
-               work on any machine. */
 
             Teleprinter("""
                 Hello! Before you start, please full screen the console for the best experience.
@@ -62,7 +61,7 @@ namespace ConsoleApp1
                         world.DisplayCurrentRoom();
                         break;
                     case "test":
-                        Renderer.Render(PathAssets + "entrance_hall.txt", 2500);
+                        Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt", 2500);
                         ConsoleFormatter.Clear();
                         break;
                     case "pickup":
