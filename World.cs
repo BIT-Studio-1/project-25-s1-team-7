@@ -78,7 +78,7 @@ namespace ConsoleApp1
             // Only render ASCII art if this room has a scene file
             if (!string.IsNullOrEmpty(CurrentRoom.scenePath) && File.Exists(CurrentRoom.scenePath)) // Check if the file exists to avoid errors
             {
-                
+                return;
             }
 
             Console.WriteLine($"Current room: {CurrentRoom.Name}");
@@ -95,6 +95,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("There are no items in this room.");
             }
+
             DisplayAvailableDirections();
         }
 
