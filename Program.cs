@@ -47,7 +47,9 @@ namespace ConsoleApp1
             while (running) // Game loop, will continue until player types 'quit'
             {
                 Console.Write("> ");
-                string command = Console.ReadLine().Trim().ToLower();
+                string command = Console.ReadLine() ?? ""
+                    .Trim().ToLower();
+
                 switch (command)
                 {
                     case "help":
@@ -60,18 +62,22 @@ namespace ConsoleApp1
 
                     case "move":
                         Console.Write("Enter direction (north, south, east, west): ");
-                        string direction = Console.ReadLine().Trim().ToLower();
+                        string direction = Console.ReadLine() ?? ""
+                            .Trim().ToLower();
+
                         world.MovePlayer(direction);
                         break;
 
                     case "test":
-                        Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt", 2500);
+                        Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt");
                         ConsoleFormatter.Clear();
                         break;
 
                     case "pickup":
                         Console.Write("What do you want to pick up? ");
-                        string itemName = Console.ReadLine().Trim().ToLower();
+                        string itemName = Console.ReadLine() ?? ""
+                            .Trim().ToLower();
+
                         Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName);
                         if (foundItem != null)
                         {
