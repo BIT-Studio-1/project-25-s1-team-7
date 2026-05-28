@@ -26,13 +26,10 @@ Sword - found in Chest, very pointy, ouch.
 Chest - unlocked and has heaps of turnips, not useful, but there seems to be a sword in there too, weird place to keep it but hey.
 Bookshelf - Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit cauldron... curious, and a personal journal, potentially belonging to the sorcerer.
 Book on being wicked - contains text that says 'Mwahahahahahaha' and that's it.
-brewing up broth - a cooking guide - contains many soupy recipes
-journal - holds random notes and a bookmarked page that reads "the answer is the third number, minus the first, times the second, plus the first"
+Brewing up broth - a cooking guide - contains many soupy recipes
+Journal - holds random notes and a bookmarked page that reads "the answer is the third number, minus the first, times the second, plus the first"
 Statue - Holding key 2, seems to be enchanted as its eyes follow you around the room.
 Cauldron - sits solemnly in the corner, missing ingredients...
-
-
-
 
 
 
@@ -55,20 +52,19 @@ Room outline:
 
 7           8           9
 
+
 section 1 has:
 Bookshelf w/ books
-
-
+Book on being wicked
+Brewing up Broth
+Journal
 
 section 2 has:
 Exit door
 
-
-
 section 3 has:
 NPC
-
-
+Key 3
 
 section 4 has:
 Chest
@@ -83,15 +79,13 @@ section 6 has:
 Torch
 Key 1
 
-
 section 7 has:
 Cauldron
-
+Key 4
 
 section 8 has:
 Statue
 Key 2
-
 
 section 9 has:
 Crate
