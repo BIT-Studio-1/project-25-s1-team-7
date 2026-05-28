@@ -3,6 +3,7 @@
 // Utilities
 using static ConsoleApp1.GraphicUtils;
 using static ConsoleApp1.SoundUtils;
+using static ConsoleApp1.Titlescreen;
 
 // Game classes
 
@@ -20,6 +21,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            PlayTitleScreen();
+
             Console.OutputEncoding = Encoding.UTF8;
 
             Teleprinter("""
