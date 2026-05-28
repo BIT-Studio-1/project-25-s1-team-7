@@ -33,7 +33,7 @@ namespace ConsoleApp1
             /// </summary>
             /// <param name="filePath"></param>
             /// <param name="delay"></param>
-            public static void Render(string filePath, int delay = 0)
+            public static void Render(string filePath)
             {
                 ConsoleFormatter.SetCursor(false);
                 ConsoleFormatter.Clear(true);
@@ -86,14 +86,13 @@ namespace ConsoleApp1
                 }
                 finally
                 {
-                    // If a delay is given, do that here.
-                    if (delay > 0)
+                    while (Console.ReadKey().Key != ConsoleKey.Escape)
                     {
-                        Thread.Sleep(delay);
+                        continue;
                     }
 
                     /* If there is an error, we need to restore
-                     * the cursor and screen here */
+                    * the cursor and screen here */
 
                     ConsoleFormatter.SetCursor(true);
                     ConsoleFormatter.Clear(true);
@@ -113,63 +112,66 @@ namespace ConsoleApp1
 
                 try
                 {
-                    string[] frames = Directory.GetFiles(folderPath, "*_frame.txt");
-                    Array.Sort(frames);
-
-                    if (frames.Length == 0)
+                    while (Console.ReadKey().Key != ConsoleKey.Escape)
                     {
-                        Console.WriteLine("No frames found.");
-                        return;
-                    }
+                        string[] frames = Directory.GetFiles(folderPath, "*_frame.txt");
+                        Array.Sort(frames);
 
-                    /* All frames should be of the same size so I'm only going
-                     to bother checking the dimensions of the first frame */
-
-                    string[] initialFrameLines = File.ReadAllLines(frames[0])
-                        .Select(FormatLine)
-                        .ToArray();
-
-                    int frameHeight = initialFrameLines.Length;
-
-                    int frameWidth = initialFrameLines
-                        .Select(GetLineLength)
-                        .DefaultIfEmpty(0)
-                        .Max();
-
-                    int top = (Console.WindowHeight - frameHeight) / 2;
-                    int left = (Console.WindowWidth - frameWidth) / 2;
-
-                    if (top < 0 || left < 0)
-                    {
-                        throw new ArgumentException("Frame is too large for the console window.");
-                    }
-
-                    do
-                    {
-                        foreach (string frame in frames)
+                        if (frames.Length == 0)
                         {
-                            string[] formattedLines = File.ReadAllLines(frame)
-                                .Select(FormatLine)
-                                .ToArray();
+                            Console.WriteLine("No frames found.");
+                            return;
+                        }
 
-                            for (int i = 0; i < formattedLines.Length; i++)
+                        /* All frames should be of the same size so I'm only going
+                         to bother checking the dimensions of the first frame */
+
+                        string[] initialFrameLines = File.ReadAllLines(frames[0])
+                            .Select(FormatLine)
+                            .ToArray();
+
+                        int frameHeight = initialFrameLines.Length;
+
+                        int frameWidth = initialFrameLines
+                            .Select(GetLineLength)
+                            .DefaultIfEmpty(0)
+                            .Max();
+
+                        int top = (Console.WindowHeight - frameHeight) / 2;
+                        int left = (Console.WindowWidth - frameWidth) / 2;
+
+                        if (top < 0 || left < 0)
+                        {
+                            throw new ArgumentException("Frame is too large for the console window.");
+                        }
+
+                        do
+                        {
+                            foreach (string frame in frames)
                             {
-                                int y = top + i;
+                                string[] formattedLines = File.ReadAllLines(frame)
+                                    .Select(FormatLine)
+                                    .ToArray();
 
-                                if (y >= Console.WindowHeight)
-                                    break;
+                                for (int i = 0; i < formattedLines.Length; i++)
+                                {
+                                    int y = top + i;
 
-                                Console.SetCursorPosition(left, y);
-                                Console.Write(formattedLines[i]);
-                            }
+                                    if (y >= Console.WindowHeight)
+                                        break;
 
-                            if (delay > 0)
-                            {
-                                Thread.Sleep(delay);
+                                    Console.SetCursorPosition(left, y);
+                                    Console.Write(formattedLines[i]);
+                                }
+
+                                if (delay > 0)
+                                {
+                                    Thread.Sleep(delay);
+                                }
                             }
                         }
+                        while (loop); 
                     }
-                    while (loop);
                 }
                 catch (Exception ex)
                 {
