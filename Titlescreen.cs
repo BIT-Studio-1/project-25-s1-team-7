@@ -52,31 +52,19 @@ namespace ConsoleApp1
             }
         }
 
-        static void RunGame()
+        public static void RunGame()
         {
             Console.Clear();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game started!");
             Console.ResetColor();
-
-            Console.WriteLine();
-            Console.WriteLine("Your game code goes here.");
-            Console.WriteLine();
-            Console.WriteLine("Press ESC to quit.");
-
-            while (true)
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    Environment.Exit(0);
-                }
-            }
+            Thread.Sleep(3000);
+            Console.Clear();
+            
         }
 
-        static void PlayTitleScreen ()
+        public static void PlayTitleScreen ()
         {
             Console.CursorVisible = false;
 
@@ -90,6 +78,7 @@ namespace ConsoleApp1
                 else if (gameState == GameState.Playing)
                 {
                     RunGame();
+                    break;
                 }
             }
         }
