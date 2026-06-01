@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,46 +47,29 @@ namespace ConsoleApp1
             _mapGrid[1, 0].isLocked = true; // Flooded basement locked until player finds key in guard's quarters. Can add more locked rooms and keys as needed.
 
             //Add items to rooms here. Items hardcoded for ease of use. Populating rooms with items dynamically not necessary.
-
-            // Item 1
-            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", " Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit cauldron... curious, and a personal journal, potentially belonging to the sorcerer."));
-            _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it."));
-            _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes"));
-            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n"));
-
-            // Item 2
-            // TODO: Add door _mapGrid[0, 1].Items.Add ? or separate method maybe - needs keys to interact with it.
-
-            // Item 3
-            // NPC TODO? If so add here
-            _mapGrid[0, 1].Items.Add(new Item("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door."));
-            // Item 4
-
+            // Section 4
             _mapGrid[1, 0].Items.Add(new Item("Chest", "Unlocked, full of turnips and a sword."));
             _mapGrid[1, 0].Items.Add(new Item("Sword", "Very pointy, ouch."));
 
-            // Item 5
+            // Section 5
             _mapGrid[1, 1].Items.Add(new Item("Table", "Shifty looking table somehow still standing."));
             _mapGrid[1, 1].Items.Add(new Item("Matchbox", "Found on the table, can be used to light the torch."));
             _mapGrid[1, 1].Items.Add(new Item("Bottle of Water", "A bottle of water, refreshing."));
 
-            // Item 6
+            // Section 6
             _mapGrid[1, 2].Items.Add(new Item("Torch", "Can be lit to reveal things you may have missed."));
             _mapGrid[1, 2].Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out."));
 
-            // Item 7
+            // Section 7
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents."));
-            _mapGrid[2, 0].Items.Add(new Item("Key 4", "A shiny yellow key, looks to be made of some sort of precious metal, the final puzzle piece to leaving this horrid place."));
 
-            // Item 8
+            // Section 8
             _mapGrid[2, 1].Items.Add(new Item("Statue", "Its eyes seem to follow you around the room."));
             _mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door."));
 
-            // Item 9
+            // Section 9
             _mapGrid[2, 2].Items.Add(new Item("Crate", "Sealed shut, might need something to open it."));
             _mapGrid[2, 2].Items.Add(new Item("Unknown Herbs", "Strange herbs, not sure what they do."));
-
-
         }
 
 
