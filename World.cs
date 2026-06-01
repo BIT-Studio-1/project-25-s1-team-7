@@ -39,7 +39,7 @@ namespace ConsoleApp1
             _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, GameConfig.PathAssets + "\\map\\main_map.txt");
             _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, GameConfig.PathAssets + "\\walls\\east_wall.txt");
             //Section 3
-            _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, GameConfig.PathAssets + "\\walls\\south_west.txt");
+            _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, GameConfig.PathAssets + "\\walls\\south_west_corner.txt");
             _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, GameConfig.PathAssets + "\\walls\\south_wall.txt");
             _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, GameConfig.PathAssets + "\\walls\\south_east_corner.txt");
 
