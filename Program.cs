@@ -47,6 +47,12 @@ namespace ConsoleApp1
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
             bool running = true;
+            Teleprinter("""
+                You slowly regain consciousness - you realize you are imprisoned. 
+                                
+                Available commands: look, move, pickup, inventory, escape, quit 
+                """, 5);
+            Thread.Sleep(1000);
             while (running) // Game loop, will continue until player types 'quit'
             {
                 Console.Write("> ");
@@ -81,7 +87,7 @@ namespace ConsoleApp1
                         string itemName = Console.ReadLine() ?? ""
                             .Trim().ToLower();
 
-                        Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName);
+                        Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
                         if (foundItem != null)
                         {
                             player.PickUp(foundItem);

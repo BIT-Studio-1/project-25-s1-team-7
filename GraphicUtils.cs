@@ -86,10 +86,14 @@ namespace ConsoleApp1
                 }
                 finally
                 {
-                    while (Console.ReadKey().Key != ConsoleKey.Escape)
-                    {
-                        continue;
-                    }
+                    // I have no idea what's going on.
+
+                    //while (Console.ReadKey().Key != ConsoleKey.Escape)
+                    //{
+                    //    continue;
+                    //}
+
+                    Console.ReadKey();
 
                     /* If there is an error, we need to restore
                     * the cursor and screen here */
