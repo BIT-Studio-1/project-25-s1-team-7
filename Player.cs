@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleApp1.World;
 
 namespace ConsoleApp1
 {
@@ -79,11 +78,6 @@ namespace ConsoleApp1
                     Console.WriteLine($"- {item.Name}: {item.Description}"); // basic inventory display, can be enhanced with item stats, quantity, etc.
                 }
             }
-        }
-
-        public void torchPuzzle()
-        {
-            
         }
     }
 }
