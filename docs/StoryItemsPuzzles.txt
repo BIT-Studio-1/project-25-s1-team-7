@@ -38,7 +38,7 @@ Cauldron - sits solemnly in the corner, missing ingredients...
 Puzzles:
 To unlock key 1, you need to have the matchbox and torch, light the torch to see better, and you will be able to see the key hanging up on the wall.
 To unlock key 2, you need to answer a question, given to you by the statue, could be quite funny to make it 'what is the binary answer for 20 - 14?' answer is '0110' reference to Vic lol
-To unlock key 3, Ask NPC for riddle, where he will give you 3 numbers, "I have these 3 numbers, 4, 2, and 7, you need to use them to result in the answer somehow.." answer is 10, the notes in journal help you find the answer.
+To unlock key 3, look at sign for riddle, it will give you 3 numbers, "I have these 3 numbers, 4, 2, and 7, you need to use them to result in the answer somehow.." answer is 10, the notes in journal help you find the answer.
 To unlock key 4, light cauldron, add water from water bottle, add unknown herbs, once the pot comes to a boil the soup evaporates to reveal the fourth and final key.
 
 

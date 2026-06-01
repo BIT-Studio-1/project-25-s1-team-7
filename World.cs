@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using static ConsoleApp1.GraphicUtils;
+using static ConsoleApp1.Player;
 
 namespace ConsoleApp1
 {
@@ -152,6 +153,27 @@ namespace ConsoleApp1
         {
             var directions = GetAvailableDirections();
             Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
+        }
+
+        // set up puzzle methods
+        public void TorchPuzzle()
+        {
+
+        }
+
+        public void StatuePuzzle()
+        {
+
+        }
+
+        public void RiddlePuzzle()
+        {
+
+        }
+
+        public void CauldronPuzzle()
+        {
+
         }
     }
 }
