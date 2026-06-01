@@ -52,12 +52,17 @@ namespace ConsoleApp1
             // Item 1
             _mapGrid[0, 0].Items.Add(new Item("Bookshelf", " Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit cauldron... curious, and a personal journal, potentially belonging to the sorcerer."));
             _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it."));
+            _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes"));
+            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n"));
 
             // Item 2
-            
+            // TODO: Add door _mapGrid[0, 1].Items.Add ? or separate method maybe - needs keys to interact with it.
+
             // Item 3
-            
+            // NPC TODO? If so add here
+            _mapGrid[0, 1].Items.Add(new Item("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door."));
             // Item 4
+
             _mapGrid[1, 0].Items.Add(new Item("Chest", "Unlocked, full of turnips and a sword."));
             _mapGrid[1, 0].Items.Add(new Item("Sword", "Very pointy, ouch."));
 
@@ -72,6 +77,7 @@ namespace ConsoleApp1
 
             // Item 7
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents."));
+            _mapGrid[2, 0].Items.Add(new Item("Key 4", "A shiny yellow key, looks to be made of some sort of precious metal, the final puzzle piece to leaving this horrid place."));
 
             // Item 8
             _mapGrid[2, 1].Items.Add(new Item("Statue", "Its eyes seem to follow you around the room."));
