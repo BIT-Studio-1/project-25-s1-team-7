@@ -59,7 +59,7 @@ namespace ConsoleApp1
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game started!");
             Console.ResetColor();
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             Console.Clear();
             
         }
