@@ -21,7 +21,7 @@ namespace ConsoleApp1
             Name = name;
             Description = description;
             Difficulty = difficulty; //Unused currently
-            ScenePath = scenePath;
+            scenePath = ScenePath;
         }
 
         public bool AttemptEscape(Player player)
