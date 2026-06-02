@@ -50,7 +50,7 @@ namespace ConsoleApp1
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
                                 
-                Available commands: look, move, pickup, inventory, escape, quit 
+                Available commands: look, move, pickup, use, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
             while (running) // Game loop, will continue until player types 'quit'
@@ -62,7 +62,7 @@ namespace ConsoleApp1
                 switch (command)
                 {
                     case "help":
-                        Console.WriteLine("Available commands: look, move, pickup, inventory, escape, quit");
+                        Console.WriteLine("Available commands: look, move, pickup, use, inventory, escape, quit");
                         break;
 
                     case "look":
@@ -129,7 +129,26 @@ namespace ConsoleApp1
                             //    Console.WriteLine("That item is not here.");
                             //}
                             //break;
+                    case "use":
+                        Teleprinter("What do you want to use? ");
+                        Console.Write("> ");
+                        string useItemName = (Console.ReadLine() ?? "").Trim().ToLower();
+                        Teleprinter("What do you want to use it on? ");
+                        Console.Write("> ");
+                        string targetName = (Console.ReadLine() ?? "").Trim().ToLower();
+                        if 
 
+
+                        Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
+                        if (useItem != null)
+                        {
+                            world.CurrentRoom.UseItem(useItem, player);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You don't have that item.");
+                        }
+                        break;
                     case "inventory":
                         player.showInventory();
                         break;
