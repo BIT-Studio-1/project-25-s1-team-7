@@ -83,22 +83,52 @@ namespace ConsoleApp1
                         break;
 
                     case "pickup":
-                        Console.Write("What do you want to pick up? ");
-                        string itemName = Console.ReadLine() ?? ""
-                            .Trim().ToLower();
+                        
+                        Teleprinter("What do you want to pick up? ", 5);
+                        string itemName = Console.ReadLine() ?? "";
+                        itemName = itemName.Trim().ToLower();
 
-                        Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
-                        if (foundItem != null)
+                        Item foundItem = null;
+
+                        foreach (Item item in world.CurrentRoom.Items)
+                        {
+                            if (item.Name.ToLower() == itemName)
+                            {
+                                foundItem = item;
+                                break;
+                            }
+                        }
+                        if (foundItem == null)
+                        {
+                            Console.WriteLine($"There is no {itemName} here.");
+                        }
+                        else if (!foundItem.CanPickup)
+                        {
+                            Console.WriteLine($"You cannot pick up {foundItem.Name}.");
+                        }
+                        else
                         {
                             player.PickUp(foundItem);
                             world.CurrentRoom.Items.Remove(foundItem);
                             Console.WriteLine($"You picked up: {foundItem.Name}");
                         }
-                        else
-                        {
-                            Console.WriteLine("That item is not here.");
-                        }
                         break;
+                    //Console.Write("What do you want to pick up? ");
+                    //string itemName = Console.ReadLine() ?? ""
+                    //    .Trim().ToLower();
+
+                            //Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
+                            //if (foundItem != null)
+                            //{
+                            //    player.PickUp(foundItem);
+                            //    world.CurrentRoom.Items.Remove(foundItem);
+                            //    Console.WriteLine($"You picked up: {foundItem.Name}");
+                            //}
+                            //else
+                            //{
+                            //    Console.WriteLine("That item is not here.");
+                            //}
+                            //break;
 
                     case "inventory":
                         player.showInventory();
