@@ -50,10 +50,10 @@ namespace ConsoleApp1
             //Add items to rooms here. Items hardcoded for ease of use. Populating rooms with items dynamically not necessary.
 
             // Item Section 1
-            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit"));
-            _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it."));
-            _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes"));
-            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n"));
+            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit", false));
+            _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it.", true));
+            _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes", true));
+            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n",true));
 
             // Item Section 2
 
