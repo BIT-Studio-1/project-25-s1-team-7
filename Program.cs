@@ -130,19 +130,16 @@ namespace ConsoleApp1
                             //}
                             //break;
                     case "use":
-                        Teleprinter("What do you want to use? ");
+                        Teleprinter("What do you want to use? ", 5);
                         Console.Write("> ");
                         string useItemName = (Console.ReadLine() ?? "").Trim().ToLower();
-                        Teleprinter("What do you want to use it on? ");
+                        Teleprinter("What do you want to use it on? ", 5);
                         Console.Write("> ");
                         string targetName = (Console.ReadLine() ?? "").Trim().ToLower();
-                        if 
-
-
                         Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
                         if (useItem != null)
                         {
-                            world.CurrentRoom.UseItem(useItem, player);
+                            world.CurrentRoom.UseItem(player, targetName, useItem);
                         }
                         else
                         {
