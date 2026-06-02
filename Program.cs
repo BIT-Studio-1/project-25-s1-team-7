@@ -70,7 +70,8 @@ namespace ConsoleApp1
                         break;
 
                     case "move":
-                        Console.Write("Enter direction (north, south, east, west): ");
+                        Teleprinter("Enter direction (north, south, east, west): ", 5);
+                        Console.Write("> ");
                         string direction = Console.ReadLine() ?? ""
                             .Trim().ToLower();
 
@@ -85,6 +86,7 @@ namespace ConsoleApp1
                     case "pickup":
                         
                         Teleprinter("What do you want to pick up? ", 5);
+                        Console.Write("> ");
                         string itemName = Console.ReadLine() ?? "";
                         itemName = itemName.Trim().ToLower();
 
@@ -139,7 +141,7 @@ namespace ConsoleApp1
                         Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
                         if (useItem != null)
                         {
-                            world.CurrentRoom.UseItem(player, targetName, useItem);
+                            world.UseItem(useItem, targetName, player);
                         }
                         else
                         {
@@ -151,10 +153,7 @@ namespace ConsoleApp1
                         break;
 
                     case "escape":
-                        if (world.CurrentRoom.AttemptEscape(player))
-                        {
-                            running = false;
-                        }
+                            world.FinalDoorPuzzle(player);
                         break;
 
                     case "quit":
