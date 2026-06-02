@@ -12,11 +12,11 @@ namespace ConsoleApp1
         public string Name { get; set; } 
         public string Description { get; set; } 
         public bool CanPickup { get; set; }
-        public Item(string name, string description)
+        public Item(string name, string description, bool canPickup)
         {
             Name = name;
             Description = description; 
-            CanPickup = CanPickup;
+            CanPickup = canPickup;
         }
     }
 }
