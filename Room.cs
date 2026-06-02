@@ -36,20 +36,22 @@ namespace ConsoleApp1
                 Console.WriteLine("You have escaped the room! Congratulations!");
                 isEscaped = true;
                 return true;
-            }  
-        }
-        public void UseItem(Player player, string target, Item item)
-        {
-            if (Items.Contains(item))
-            {
-                Console.WriteLine($"You used {item.Name} on {target}.");
-                // Implement logic for using the item on the target
-                // For example, if the item is a key and the target is a door, you could unlock the door
-            }
-            else
-            {
-                Console.WriteLine($"You don't have {item.Name} in this room.");
             }
         }
     }
 }
+//        public void UseItem(Player player, string target, Item item)
+//        {
+//            if (Items.Contains(item))
+//            {
+//                Console.WriteLine($"You used {item.Name} on {target}.");
+//                // Implement logic for using the item on the target
+//                // For example, if the item is a key and the target is a door, you could unlock the door
+//            }
+//            else
+//            {
+//                Console.WriteLine($"You don't have {item.Name} in this room.");
+//            }
+//        }
+//    }
+//}

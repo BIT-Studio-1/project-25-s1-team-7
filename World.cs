@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +54,7 @@ namespace ConsoleApp1
             _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit", false));
             _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it.", true));
             _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes", true));
-            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n",true));
+            _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n", true));
 
             // Item Section 2
 
@@ -75,14 +76,14 @@ namespace ConsoleApp1
 
             // Item Section 6
             _mapGrid[1, 2].Items.Add(new Item("Torch", "Can be lit to reveal things you may have missed.", true));
-            _mapGrid[1, 2].Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out.", true));
+            //_mapGrid[1, 2].Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out.", true));
 
             // Item Section 7
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents.", false));
 
             // Item Section 8
             _mapGrid[2, 1].Items.Add(new Item("Statue", "Holding Key 2, it's eyes seem to follow you around the room.", false));
-            _mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
+            //_mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
             // Item Section 9
             _mapGrid[2, 2].Items.Add(new Item("Crate", "Sealed shut, might need something to open it.", false));
             _mapGrid[2, 2].Items.Add(new Item("Unknown Herbs", "Strange herbs, not sure what they do.", true));
@@ -171,24 +172,106 @@ namespace ConsoleApp1
         }
 
         // set up puzzle methods
-        public void TorchPuzzle()
+        public void UseItem(Item item, string target, Player player)
         {
-
+            // Dispatch to the right puzzle based on current room
+            if (CurrentRoom == _mapGrid[1, 2]) // Section 6 - Torch room
+            {
+                TorchPuzzle(item, target, player);
+            }
+            else
+            {
+                Console.WriteLine($"You used {item.Name} on {target}. Nothing happened.");
+            }
         }
 
-        public void StatuePuzzle()
+        public void TorchPuzzle(Item item, string target, Player player)
         {
-
+            if (item.Name.ToLower() == "matchbox" && target == "torch")
+            {
+                // Check player has the torch too
+                Item torch = player.Inventory.Find(i => i.Name.ToLower() == "torch");
+                if (torch != null)
+                {
+                    Console.WriteLine("You light the torch! The room brightens and you notice a blue key hanging on the wall.");
+                    // Add Key 1 to the room for player to pick up
+                    CurrentRoom.Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out.", true));
+                }
+                else
+                {
+                    Console.WriteLine("You'd need a torch to light first.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nothing happens.");
+            }
         }
 
-        public void RiddlePuzzle()
+        public void StatuePuzzle(Item item, string target, Player player)
         {
-
+            if (item.Name.ToLower() == "sword" && target == "statue")
+            {
+                Console.WriteLine("You place the sword in the statue's hands. The statue's eyes glow red and a hidden compartment opens, revealing a red key.");
+                // Add Key 2 to the room for player to pick up
+                CurrentRoom.Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
+            }
+            else
+            {
+                Console.WriteLine("Nothing happens.");
+            }
         }
 
-        public void CauldronPuzzle()
+        public void RiddlePuzzle(Item item, string target, Player player)
         {
+            if (item.Name.ToLower() == "journal" && target == "bookshelf")
+            {
+                Console.WriteLine("You read the journal's bookmarked page and solve the riddle. A secret compartment in the bookshelf opens, revealing a green key.");
+                // Add Key 3 to the room for player to pick up
+                CurrentRoom.Items.Add(new Item("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door.", true));
+            }
+            else
+            {
+                Console.WriteLine("Nothing happens.");
+            }
+        }
 
+        public void CauldronPuzzle(Item item, string target, Player player)
+        {
+            if (item.Name.ToLower() == "brewing up broth" && target == "cauldron")
+            {
+                Console.WriteLine("You follow a recipe from the 'Brewing up Broth' book and mix the unknown herbs with the water in the cauldron. The mixture bubbles and reveals a hidden compartment in the cauldron, containing a key.");
+                // Add Key 4 to the room for player to pick up
+                CurrentRoom.Items.Add(new Item("Key 4", "A mysterious purple key that could help you open that door.", true));
+            }
+            else
+            {
+                Console.WriteLine("Nothing happens.");
+            }
+        }
+        public void FinalDoorPuzzle(Player player)
+        {
+            if (CurrentRoom == _mapGrid[0, 0]) // Section 1 - Exit room
+            {
+                // Check player has all 4 keys
+                bool hasKey1 = player.Inventory.Exists(i => i.Name.ToLower() == "key 1");
+                bool hasKey2 = player.Inventory.Exists(i => i.Name.ToLower() == "key 2");
+                bool hasKey3 = player.Inventory.Exists(i => i.Name.ToLower() == "key 3");
+                bool hasKey4 = player.Inventory.Exists(i => i.Name.ToLower() == "key 4");
+                if (hasKey1 && hasKey2 && hasKey3 && hasKey4)
+                {
+                    Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");
+                    CurrentRoom.isEscaped = true;
+                }
+                else
+                {
+                    Console.WriteLine("The door is locked. You need to find all four keys to escape.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no door to escape here.");
+            }
         }
     }
 }
