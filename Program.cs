@@ -79,6 +79,7 @@ namespace ConsoleApp1
 
                         world.MovePlayer(direction.Trim().ToLower());
                         break;
+                        world.CauldronPuzzle(player);
 
                     case "test":
                         Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt");
@@ -145,10 +146,13 @@ namespace ConsoleApp1
                         {
                             world.UseItem(useItem, targetName, player);
                         }
+
                         else
                         {
                             Console.WriteLine("You don't have that item.");
                         }
+                        
+                        
                         break;
                     case "inventory":
                         player.showInventory();

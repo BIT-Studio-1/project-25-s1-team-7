@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -20,6 +21,9 @@ namespace ConsoleApp1
         private int _playerCol = 1;
         private bool _riddlePuzzleSolved = false;
         private bool _statePuzzleSolved = false;
+        private bool _cauldronPuzzleSolved = false;
+        private bool _waterAdded = false;
+        private bool _herbsAdded = false;
 
 
 
@@ -318,18 +322,65 @@ namespace ConsoleApp1
             return true;
         }
 
-        public void CauldronPuzzle(Item item, string target, Player player)
+        public bool CauldronPuzzle(Player player)
         {
-            if (item.Name.ToLower() == "brewing up broth" && target == "cauldron")
+            bool isInCauldronRoom = _playerRow == 2 && _playerCol == 0;
+
+            Item? cauldron = CurrentRoom.Items.Find(item =>
+                item.Name.Equals("Cauldron", StringComparison.OrdinalIgnoreCase));
+
+            Item? key = CurrentRoom.Items.Find(item =>
+                item.Name.Equals("Key 4", StringComparison.OrdinalIgnoreCase));
+
+            if (!isInCauldronRoom || cauldron == null)
             {
-                Console.WriteLine("You follow a recipe from the 'Brewing up Broth' book and mix the unknown herbs with the water in the cauldron. The mixture bubbles and reveals a hidden compartment in the cauldron, containing a key.");
-                // Add Key 4 to the room for player to pick up
-                CurrentRoom.Items.Add(new Item("purple key", "A mysterious purple key that could help you open that door.", true));
+                Console.WriteLine("There is no cauldron here.");
+                return false;
             }
-            else
+
+            if (_cauldronPuzzleSolved)
             {
-                Console.WriteLine("Nothing happens.");
+                Console.WriteLine("The cauldron sits empty. You already claimed the key.");
+                return true;
             }
+
+            Item? waterBottle = player.Inventory.Find(item =>
+                item.Name.Equals("Water Bottle", StringComparison.OrdinalIgnoreCase));
+
+            Item? herbs = player.Inventory.Find(item =>
+                item.Name.Equals("Unknown Herbs", StringComparison.OrdinalIgnoreCase));
+
+            if (waterBottle == null || herbs == null)
+            {
+                Console.WriteLine("The cauldron seems to need both water and herbs.");
+                return false;
+            }
+
+            Console.WriteLine("You pour the water into the cauldron.");
+            Console.WriteLine("You add the unknown herbs.");
+            Console.WriteLine();
+            Console.WriteLine("The mixture begins to bubble violently...");
+            Console.WriteLine("Steam fills the room.");
+            Console.WriteLine("As the liquid evaporates, something gleams at the bottom.");
+            Console.WriteLine();
+
+            player.Inventory.Remove(waterBottle);
+            player.Inventory.Remove(herbs);
+
+            _cauldronPuzzleSolved = true;
+
+            if (key != null)
+            {
+                CurrentRoom.Items.Remove(key);
+                key.CanPickup = true;
+                player.PickUp(key);
+            }
+
+            cauldron.Description =
+                "The cauldron is dry and empty. Whatever magic it held has long since faded.";
+
+            Console.WriteLine("You found Key 4!");
+            return true;
         }
         public void FinalDoorPuzzle(Player player)
         {
