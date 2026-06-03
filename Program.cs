@@ -50,7 +50,7 @@ namespace ConsoleApp1
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
                                 
-                Available commands: look, move, pickup, use, inventory, escape, quit 
+                Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
             while (running) // Game loop, will continue until player types 'quit'
@@ -58,11 +58,13 @@ namespace ConsoleApp1
                 Console.Write("> ");
                 string command = Console.ReadLine() ?? ""
                     .Trim().ToLower();
+                string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
+                string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
 
                 switch (command)
                 {
                     case "help":
-                        Console.WriteLine("Available commands: look, move, pickup, use, inventory, escape, quit");
+                        Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
                         break;
 
                     case "look":
@@ -75,7 +77,7 @@ namespace ConsoleApp1
                         string direction = Console.ReadLine() ?? ""
                             .Trim().ToLower();
 
-                        world.MovePlayer(direction);
+                        world.MovePlayer(direction.Trim().ToLower());
                         break;
 
                     case "test":
@@ -152,26 +154,60 @@ namespace ConsoleApp1
                         player.showInventory();
                         break;
 
+                    case "inspect":
+                        string inspectTarget;
+                        if (inputParts.Length > 1)
+                        {
+                            inspectTarget = inputParts[1].Trim().ToLower();
+                            if (inspectTarget.StartsWith("the "))
+                            {
+                                inspectTarget = inspectTarget[4..].Trim();
+                            }
+                        }
+                        else
+                        {
+                            Console.Write("What do you want to inspect? ");
+                            inspectTarget = (Console.ReadLine() ?? "").Trim().ToLower();
+                        }
+
+                        if (inspectTarget.Equals("statue", StringComparison.OrdinalIgnoreCase))
+                        {
+                            world.StatuePuzzle(player);
+                        }
+                        else if (inspectTarget.Equals("journal", StringComparison.OrdinalIgnoreCase))
+                        {
+                            world.InspectJournal(player);
+                        }
+                        else if (inspectTarget.Equals("sign", StringComparison.OrdinalIgnoreCase) || inspectTarget.Equals("riddle", StringComparison.OrdinalIgnoreCase))
+                        {
+                            world.RiddlePuzzle(player);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You do not notice anything unusual");
+                        }
+                        break;
+
                     case "escape":
-                            world.FinalDoorPuzzle(player);
-                        break;
+                                world.FinalDoorPuzzle(player);
+                                break;
 
-                    case "quit":
-                    case "exit":
-                    case "q":
-                        running = false;
-                        Console.WriteLine("Thanks for playing!");
-                        break;
+                            case "quit":
+                            case "exit":
+                            case "q":
+                                running = false;
+                                Console.WriteLine("Thanks for playing!");
+                                break;
 
-                    case "cls":
-                    case "clear":
-                        ConsoleFormatter.Clear();
-                        break;
+                            case "cls":
+                            case "clear":
+                                ConsoleFormatter.Clear();
+                                break;
 
-                    default:
-                        Console.WriteLine("Unknown command. Type 'help' for a list of commands.");
-                        break;
-                }
+                            default:
+                                Console.WriteLine("Unknown command. Type 'help' for a list of commands.");
+                                break;
+                            }
             }
         }
     }

@@ -18,6 +18,8 @@ namespace ConsoleApp1
         //Player starts in bottom middle square of 3x3 grid.
         private int _playerRow = 0;
         private int _playerCol = 1;
+        private bool _riddlePuzzleSolved = false;
+        private bool _statePuzzleSolved = false;
 
 
 
@@ -63,7 +65,7 @@ namespace ConsoleApp1
             // Item Section 3
 
             //_mapGrid[0, 2].Items.Add(new Item("")); - NPC (or sign - more realistic for the timeframe)
-            _mapGrid[0, 2].Items.Add(new Item("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door.", true));
+            _mapGrid[0, 2].Items.Add(new Item("Sign", "The sign reads: \"I have these 3 numbers: 4, 2, and 7. You need to use them to result in the answer somehow...\"", false));
 
             // Item Section 4
             _mapGrid[1, 0].Items.Add(new Item("Chest", "unlocked and has heaps of turnips, not useful, but there seems to be a sword in there too, weird place to keep it but hey.", false));
@@ -210,7 +212,7 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("You light the torch! The room brightens and you notice a blue key hanging on the wall.");
                     // Add Key 1 to the room for player to pick up
-                    CurrentRoom.Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out.", true));
+                    CurrentRoom.Items.Add(new Item("blue key", "A mysterious blue key, the first step to getting out.", true));
                 }
                 else
                 {
@@ -223,32 +225,97 @@ namespace ConsoleApp1
             }
         }
 
-        public void StatuePuzzle(Item item, string target, Player player)
+        public bool StatuePuzzle(Player player)
         {
-            if (item.Name.ToLower() == "sword" && target == "statue")
+            bool isInDiningHall = _playerRow == 2 && _playerCol == 1;
+            Item? statue = CurrentRoom.Items.Find(item => item.Name.Equals("Statue", StringComparison.OrdinalIgnoreCase));
+            Item? key = CurrentRoom.Items.Find(item => item.Name.Equals("red key", StringComparison.OrdinalIgnoreCase));
+
+            if (!isInDiningHall || statue == null)
             {
-                Console.WriteLine("You place the sword in the statue's hands. The statue's eyes glow red and a hidden compartment opens, revealing a red key.");
-                // Add Key 2 to the room for player to pick up
-                CurrentRoom.Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
+                Console.WriteLine("There is no statue here to inspect");
+                return false;
             }
-            else
+
+            if (_statePuzzleSolved)
             {
-                Console.WriteLine("Nothing happens.");
+                Console.WriteLine("The statue has already given you the red key.");
+                return true;
             }
+
+            Console.WriteLine("The statue's stone eyes glow as it asks:");
+            Console.WriteLine("\"What is the binary answer for 20 - 14?\"");
+            string answer = Console.ReadLine() ?? "";
+
+            if (answer.Trim() != "0110")
+            {
+                Console.WriteLine("The statue goes still. That answer must not have been correct.");
+                return false;
+            }
+
+            _statePuzzleSolved = true;
+            if (key != null)
+            {
+                CurrentRoom.Items.Remove(key);
+                key.CanPickup = true;
+                player.PickUp(key);
+            }
+
+            statue.Description = "The statue stands peacefully now, no longer clutching the red key.";
+            Console.WriteLine("The statue nods and drops the red key");
+            return true;
         }
 
-        public void RiddlePuzzle(Item item, string target, Player player)
+        public bool InspectJournal(Player player)
         {
-            if (item.Name.ToLower() == "journal" && target == "bookshelf")
+            Item? journal = CurrentRoom.Items.Find(item => item.Name.Equals("Journal", StringComparison.OrdinalIgnoreCase));
+            journal ??= player.Inventory.Find(item => item.Name.Equals("Journal", StringComparison.OrdinalIgnoreCase));
+
+            if (journal == null)
             {
-                Console.WriteLine("You read the journal's bookmarked page and solve the riddle. A secret compartment in the bookshelf opens, revealing a green key.");
-                // Add Key 3 to the room for player to pick up
-                CurrentRoom.Items.Add(new Item("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door.", true));
+                Console.WriteLine("There is no journal here to inspect.");
+                return false;
             }
-            else
+
+            Console.WriteLine("The journal holds random notes and a bookmarked page that reads:");
+            Console.WriteLine("\"The answer is (the third number minus the first) times the second, plus the first.\"");
+            return true;
+        }
+
+        public bool RiddlePuzzle(Player player)
+        {
+            bool isInLibrary = _playerRow == 0 && _playerCol == 2;
+            Item? sign = CurrentRoom.Items.Find(item => item.Name.Equals("Sign", StringComparison.OrdinalIgnoreCase));
+
+            if (!isInLibrary || sign == null)
             {
-                Console.WriteLine("Nothing happens.");
+                Console.WriteLine("There is no riddle sign here to inspect.");
+                return false;
             }
+
+            Console.WriteLine(sign.Description);
+
+            if (_riddlePuzzleSolved)
+            {
+                Console.WriteLine("The riddle has already been solved, and Key 3 has been taken.");
+                return true;
+            }
+
+            Console.WriteLine("The journal's note may help you arrange the numbers.");
+            Console.Write("Answer: ");
+            string answer = Console.ReadLine() ?? "";
+
+            if (answer.Trim() != "10")
+            {
+                Console.WriteLine("The sign remains silent. That answer was not correct.");
+                return false;
+            }
+
+            _riddlePuzzleSolved = true;
+            Item key = new("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door.");
+            player.PickUp(key);
+            Console.WriteLine("The sign clicks, and the green key drops into your hands.");
+            return true;
         }
 
         public void CauldronPuzzle(Item item, string target, Player player)
@@ -257,7 +324,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("You follow a recipe from the 'Brewing up Broth' book and mix the unknown herbs with the water in the cauldron. The mixture bubbles and reveals a hidden compartment in the cauldron, containing a key.");
                 // Add Key 4 to the room for player to pick up
-                CurrentRoom.Items.Add(new Item("Key 4", "A mysterious purple key that could help you open that door.", true));
+                CurrentRoom.Items.Add(new Item("purple key", "A mysterious purple key that could help you open that door.", true));
             }
             else
             {
@@ -269,7 +336,7 @@ namespace ConsoleApp1
             if (CurrentRoom == _mapGrid[0, 0]) // Section 1 - Exit room
             {
                 // Check player has all 4 keys
-                bool hasKey1 = player.Inventory.Exists(i => i.Name.ToLower() == "key 1");
+                bool hasKey1 = player.Inventory.Exists(i => i.Name.ToLower() == "blue key");
                 bool hasKey2 = player.Inventory.Exists(i => i.Name.ToLower() == "key 2");
                 bool hasKey3 = player.Inventory.Exists(i => i.Name.ToLower() == "key 3");
                 bool hasKey4 = player.Inventory.Exists(i => i.Name.ToLower() == "key 4");
