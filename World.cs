@@ -133,6 +133,7 @@ namespace ConsoleApp1
 
         public void MovePlayer(string direction)
         {
+            direction = NormalizeDirection(direction);
 
             //Checks if the direction the player wants to move in is in the list of available directions. If it is, moves player in that direction and returns true. If not, returns false.
             var availableDirections = GetAvailableDirections();
@@ -156,6 +157,8 @@ namespace ConsoleApp1
                         Console.WriteLine("Invalid input. Please try north, south, east or west.");
                         return;
                 }
+                Console.WriteLine($"You move {direction} into the {CurrentRoom.Name}.");
+                DisplayAvailableDirections();
             }
             else
             {
@@ -169,6 +172,18 @@ namespace ConsoleApp1
         {
             var directions = GetAvailableDirections();
             Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
+        }
+
+        private string NormalizeDirection(string direction)
+        {
+            return direction switch
+            {
+                "n" => "north",
+                "s" => "south",
+                "e" => "east",
+                "w" => "west",
+                _ => direction
+            };
         }
 
         // set up puzzle methods
