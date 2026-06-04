@@ -56,7 +56,7 @@ namespace ConsoleApp1
             while (running) // Game loop, will continue until player types 'quit'
             {
                 Console.Write("> ");
-                string command = Console.ReadLine() ?? ""
+                string command = (Console.ReadLine() ?? "")
                     .Trim().ToLower();
                 string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
                 string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
