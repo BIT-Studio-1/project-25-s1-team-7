@@ -198,6 +198,21 @@ namespace ConsoleApp1
             {
                 TorchPuzzle(item, target, player);
             }
+
+            else if (CurrentRoom == _mapGrid[2, 1]) // Section 8 - Statue room
+            {
+                StatuePuzzle(player);
+            }
+            else if (CurrentRoom == _mapGrid[0, 2]) // Section 3 - Riddle room
+            {
+                RiddlePuzzle(player);
+            }
+            else if (CurrentRoom == _mapGrid[2, 0]) // Section 7 - Cauldron room
+            {
+                CauldronPuzzle(player);
+            }
+
+
             else
             {
                 Console.WriteLine($"You used {item.Name} on {target}. Nothing happened.");
@@ -256,17 +271,13 @@ namespace ConsoleApp1
             }
 
             _statuePuzzleSolved = true;
-            CurrentRoom.Items.Add(new Item("red key", "A glowing red key that looks like it could help you open that darn door."));
-            if (key != null)
-            {
-                CurrentRoom.Items.Remove(key);
-                key.CanPickup = true;
-                player.PickUp(key);
-            }
-
+            Item redKey = new Item("red key", "A glowing red key that looks like it could help you open that darn door.", true); // fixed, was previously looking for the red key in the room which was causing a bug
+                                                                                                                                 // where it would say there was no red key to pick up, even though it was supposed
+                                                                                                                                 // to be added after solving the puzzle.
+            player.PickUp(redKey);
             statue.Description = "The statue stands peacefully now, no longer clutching the red key.";
-            Console.WriteLine("The statue nods and drops the red key");
-            return true;
+            Console.WriteLine("The statue nods and drops the red key into your hands.");
+            return true; 
         }
 
         public bool InspectJournal(Player player)
@@ -328,8 +339,8 @@ namespace ConsoleApp1
             Item? cauldron = CurrentRoom.Items.Find(item =>
                 item.Name.Equals("Cauldron", StringComparison.OrdinalIgnoreCase));
 
-            Item? key = CurrentRoom.Items.Find(item =>
-                item.Name.Equals("purple key", StringComparison.OrdinalIgnoreCase));
+            //Item? key = CurrentRoom.Items.Find(item =>
+            //    item.Name.Equals("purple key", StringComparison.OrdinalIgnoreCase));
 
             if (!isInCauldronRoom || cauldron == null)
             {
@@ -367,17 +378,9 @@ namespace ConsoleApp1
             player.Inventory.Remove(herbs);
 
             _cauldronPuzzleSolved = true;
-            CurrentRoom.Items.Add(new Item("yellow key", "A shiny yellow key, looks to be made with precious metals, the final puzzle piece to leaving here."));
-
-            if (key != null)
-            {
-                CurrentRoom.Items.Remove(key);
-                key.CanPickup = true;
-                player.PickUp(key);
-            }
-
-            cauldron.Description = "The cauldron is dry and empty. Whatever magic it held has long since faded.";
-
+            Item yellowKey = new Item("yellow key", "A shiny yellow key, looks to be made with precious metals.", true);
+            player.PickUp(yellowKey);
+            cauldron.Description = "The cauldron is dry and empty.";
             Console.WriteLine("You found the yellow key!");
             return true;
         }
