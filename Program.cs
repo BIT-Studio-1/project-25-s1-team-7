@@ -78,8 +78,8 @@ namespace ConsoleApp1
                             .Trim().ToLower();
 
                         world.MovePlayer(direction.Trim().ToLower());
-                        break;
                         world.CauldronPuzzle(player);
+                        break;
 
                     case "test":
                         Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt");
