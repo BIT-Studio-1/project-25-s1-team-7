@@ -383,7 +383,7 @@ namespace ConsoleApp1
         }
         public void FinalDoorPuzzle(Player player)
         {
-            if (CurrentRoom == _mapGrid[0, 0]) // Section 1 - Exit room
+            if (CurrentRoom == _mapGrid[0, 1]) // room where you started
             {
                 // Check player has all 4 keys
                 bool hasKey1 = player.Inventory.Exists(i => i.Name.ToLower() == "blue key");
@@ -392,8 +392,14 @@ namespace ConsoleApp1
                 bool hasKey4 = player.Inventory.Exists(i => i.Name.ToLower() == "yellow key");
                 if (hasKey1 && hasKey2 && hasKey3 && hasKey4)
                 {
-                    Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");
                     CurrentRoom.isEscaped = true;
+                    if (CurrentRoom.isEscaped)
+                    {
+                        Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");
+                        Console.WriteLine("Hope you enjoyed playing The Cursed Castle. Thanks for playing!");
+                        Thread.Sleep(6000);
+                        Environment.Exit(0);
+                    }
                 }
                 else
                 {

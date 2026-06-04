@@ -19,6 +19,8 @@ namespace ConsoleApp1
 
     internal class Program
     {
+        public static bool running { get; internal set; }
+
         static void Main(string[] args)
         {
             PlayTitleScreen();
@@ -78,7 +80,6 @@ namespace ConsoleApp1
                             .Trim().ToLower();
 
                         world.MovePlayer(direction.Trim().ToLower());
-                        world.CauldronPuzzle(player);
                         break;
                         
 
