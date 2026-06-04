@@ -24,7 +24,6 @@ namespace ConsoleApp1
         {
             //TODO: maube add some logic to check if the item can be picked up (e.g., inventory limit, item weight, etc.)
             Inventory.Add(item);
-            Console.WriteLine($"{Name} picked up {item.Name}.");
         }
         public void Drop(Item item)
         {
