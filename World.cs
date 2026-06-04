@@ -343,8 +343,11 @@ namespace ConsoleApp1
                 return true;
             }
 
-            Item? waterBottle = player.Inventory.Find(item => item.Name.Equals("Bottle of Water", StringComparison.OrdinalIgnoreCase));
-            Item? herbs = player.Inventory.Find(item => item.Name.Equals("Unknown Herbs", StringComparison.OrdinalIgnoreCase));
+            Item? waterBottle = player.Inventory.Find(item =>
+                item.Name.Equals("Bottle of Water", StringComparison.OrdinalIgnoreCase));
+
+            Item? herbs = player.Inventory.Find(item =>
+                item.Name.Equals("Unknown Herbs", StringComparison.OrdinalIgnoreCase));
 
             if (waterBottle == null || herbs == null)
             {
