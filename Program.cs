@@ -63,7 +63,7 @@ namespace ConsoleApp1
                 string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
                 string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
 
-                switch (command)
+                switch (input) // was switch (command) but we want to handle cases like "move north" better, so we split the input into parts
                 {
                     case "help":
                         Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
@@ -74,18 +74,21 @@ namespace ConsoleApp1
                         break;
 
                     case "move":
-                        Teleprinter("Enter direction (north, south, east, west): ", 5);
-                        Console.Write("> ");
-                        string direction = Console.ReadLine() ?? ""
-                            .Trim().ToLower();
-
-                        world.MovePlayer(direction.Trim().ToLower());
-                        break;
-                        
-
-                    case "test":
-                        Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt");
-                        ConsoleFormatter.Clear();
+                        string direction;
+                        if (inputParts.Length > 1)
+                        {
+                            // Player typed "move north" in one go - works better for console input
+                            direction = inputParts[1].Trim().ToLower();
+                        }
+                        else
+                        {
+                            // Player just typed "move", ask for direction - keeps original
+                            Teleprinter("Which direction? (north, south, east, west): ", 5);
+                            Console.Write("> ");
+                            direction = (Console.ReadLine() ?? "").Trim().ToLower();
+                        }
+                        world.MovePlayer(direction);
+                        world.DisplayCurrentRoom();
                         break;
 
                     case "pickup":
