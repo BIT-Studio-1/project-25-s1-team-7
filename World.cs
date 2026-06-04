@@ -20,10 +20,8 @@ namespace ConsoleApp1
         private int _playerRow = 0;
         private int _playerCol = 1;
         private bool _riddlePuzzleSolved = false;
-        private bool _statePuzzleSolved = false;
+        private bool _statuePuzzleSolved = false;
         private bool _cauldronPuzzleSolved = false;
-        private bool _waterAdded = false;
-        private bool _herbsAdded = false;
 
 
 
@@ -241,7 +239,7 @@ namespace ConsoleApp1
                 return false;
             }
 
-            if (_statePuzzleSolved)
+            if (_statuePuzzleSolved)
             {
                 Console.WriteLine("The statue has already given you the red key.");
                 return true;
@@ -257,7 +255,8 @@ namespace ConsoleApp1
                 return false;
             }
 
-            _statePuzzleSolved = true;
+            _statuePuzzleSolved = true;
+            CurrentRoom.Items.Add(new Item("red key", "A glowing red key that looks like it could help you open that darn door."));
             if (key != null)
             {
                 CurrentRoom.Items.Remove(key);
@@ -316,7 +315,7 @@ namespace ConsoleApp1
             }
 
             _riddlePuzzleSolved = true;
-            Item key = new("Key 3", "A small green key decorated with etchings of vines, it should work on the third lock on the door.");
+            Item key = new("green key", "A small green key decorated with etchings of vines, it should work on the third lock on the door.");
             player.PickUp(key);
             Console.WriteLine("The sign clicks, and the green key drops into your hands.");
             return true;
@@ -330,7 +329,7 @@ namespace ConsoleApp1
                 item.Name.Equals("Cauldron", StringComparison.OrdinalIgnoreCase));
 
             Item? key = CurrentRoom.Items.Find(item =>
-                item.Name.Equals("Key 4", StringComparison.OrdinalIgnoreCase));
+                item.Name.Equals("purple key", StringComparison.OrdinalIgnoreCase));
 
             if (!isInCauldronRoom || cauldron == null)
             {
@@ -344,11 +343,8 @@ namespace ConsoleApp1
                 return true;
             }
 
-            Item? waterBottle = player.Inventory.Find(item =>
-                item.Name.Equals("Water Bottle", StringComparison.OrdinalIgnoreCase));
-
-            Item? herbs = player.Inventory.Find(item =>
-                item.Name.Equals("Unknown Herbs", StringComparison.OrdinalIgnoreCase));
+            Item? waterBottle = player.Inventory.Find(item => item.Name.Equals("Bottle of Water", StringComparison.OrdinalIgnoreCase));
+            Item? herbs = player.Inventory.Find(item => item.Name.Equals("Unknown Herbs", StringComparison.OrdinalIgnoreCase));
 
             if (waterBottle == null || herbs == null)
             {
@@ -368,6 +364,7 @@ namespace ConsoleApp1
             player.Inventory.Remove(herbs);
 
             _cauldronPuzzleSolved = true;
+            CurrentRoom.Items.Add(new Item("yellow key", "A shiny yellow key, looks to be made with precious metals, the final puzzle piece to leaving here."));
 
             if (key != null)
             {
@@ -376,10 +373,9 @@ namespace ConsoleApp1
                 player.PickUp(key);
             }
 
-            cauldron.Description =
-                "The cauldron is dry and empty. Whatever magic it held has long since faded.";
+            cauldron.Description = "The cauldron is dry and empty. Whatever magic it held has long since faded.";
 
-            Console.WriteLine("You found Key 4!");
+            Console.WriteLine("You found the yellow key!");
             return true;
         }
         public void FinalDoorPuzzle(Player player)
@@ -388,9 +384,9 @@ namespace ConsoleApp1
             {
                 // Check player has all 4 keys
                 bool hasKey1 = player.Inventory.Exists(i => i.Name.ToLower() == "blue key");
-                bool hasKey2 = player.Inventory.Exists(i => i.Name.ToLower() == "key 2");
-                bool hasKey3 = player.Inventory.Exists(i => i.Name.ToLower() == "key 3");
-                bool hasKey4 = player.Inventory.Exists(i => i.Name.ToLower() == "key 4");
+                bool hasKey2 = player.Inventory.Exists(i => i.Name.ToLower() == "red key");
+                bool hasKey3 = player.Inventory.Exists(i => i.Name.ToLower() == "green key");
+                bool hasKey4 = player.Inventory.Exists(i => i.Name.ToLower() == "yellow key");
                 if (hasKey1 && hasKey2 && hasKey3 && hasKey4)
                 {
                     Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");

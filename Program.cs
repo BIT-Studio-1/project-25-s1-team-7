@@ -79,7 +79,7 @@ namespace ConsoleApp1
 
                         world.MovePlayer(direction.Trim().ToLower());
                         break;
-                        world.CauldronPuzzle(player);
+                        
 
                     case "test":
                         Renderer.Render(GameConfig.PathAssets + "entrance_hall.txt");
@@ -172,6 +172,10 @@ namespace ConsoleApp1
                         {
                             Console.Write("What do you want to inspect? ");
                             inspectTarget = (Console.ReadLine() ?? "").Trim().ToLower();
+                        }
+                        if (inspectTarget.Equals("cauldron", StringComparison.OrdinalIgnoreCase))
+                        {
+                            world.CauldronPuzzle(player);
                         }
 
                         if (inspectTarget.Equals("statue", StringComparison.OrdinalIgnoreCase))
