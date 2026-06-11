@@ -1,4 +1,6 @@
-# Team 7 - Escape Room Game
+<img width="1105" height="352" alt="Screenshot 2026-06-12 083825" src="https://github.com/user-attachments/assets/577adabc-c243-4540-8331-8c343f822eab" />
+
+# Team 7 - The Cursed Castle
 
 A text-based escape room game built in C# for our BIT project.
 
