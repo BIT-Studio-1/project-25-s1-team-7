@@ -123,22 +123,7 @@ namespace ConsoleApp1
                                 Console.WriteLine($"You picked up: {foundItem.Name}");
                             }
                             break;
-                        //Console.Write("What do you want to pick up? ");
-                        //string itemName = Console.ReadLine() ?? ""
-                        //    .Trim().ToLower();
 
-                        //Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
-                        //if (foundItem != null)
-                        //{
-                        //    player.PickUp(foundItem);
-                        //    world.CurrentRoom.Items.Remove(foundItem);
-                        //    Console.WriteLine($"You picked up: {foundItem.Name}");
-                        //}
-                        //else
-                        //{
-                        //    Console.WriteLine("That item is not here.");
-                        //}
-                        //break;
                         case "use":
                             Teleprinter("What do you want to use? ", 5);
                             Console.Write("> ");
