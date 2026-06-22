@@ -14,7 +14,7 @@ namespace ConsoleApp1
     /// </summary>
     internal static class GameConfig
     {
-        public static readonly string PathAssets = @"..\..\..\assets\";
+        public const string PathAssets = @"..\..\..\assets\";
     }
 
     internal class Program
