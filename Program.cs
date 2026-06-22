@@ -60,7 +60,7 @@ namespace ConsoleApp1
                     Console.Write("> ");
                     string command = (Console.ReadLine() ?? "")
                         .Trim().ToLower();
-                    string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
+                    string[] inputParts = command.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
                     string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
 
                     switch (input) // was switch (command) but we want to handle cases like "move north" better, so we split the input into parts
