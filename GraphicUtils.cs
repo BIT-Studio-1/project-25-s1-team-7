@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class GraphicUtils
+    internal static class GraphicUtils
     {
         /// <summary>
         /// Handles rendering files to the console.
