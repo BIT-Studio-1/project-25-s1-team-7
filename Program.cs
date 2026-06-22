@@ -12,7 +12,7 @@ namespace ConsoleApp1
     /// <summary>
     /// Handles information we want to access globally i.e. file paths.
     /// </summary>
-    internal class GameConfig
+    internal static class GameConfig
     {
         public static readonly string PathAssets = @"..\..\..\assets\";
     }
