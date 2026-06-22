@@ -93,12 +93,6 @@ namespace ConsoleApp1
 
         public void DisplayCurrentRoom()
         {
-            // Only render ASCII art if this room has a scene file
-            //if (!string.IsNullOrEmpty(CurrentRoom.scenePath) && File.Exists(CurrentRoom.scenePath)) // Check if the file exists to avoid errors
-            //{
-            //    return;
-            //}
-
             Renderer.Render(CurrentRoom.scenePath);
 
             Console.WriteLine($"Current room: {CurrentRoom.Name}");
