@@ -55,169 +55,173 @@ namespace ConsoleApp1
                 Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
-            while (running) // Game loop, will continue until player types 'quit'
-            {
-                Console.Write("> ");
-                string command = (Console.ReadLine() ?? "")
-                    .Trim().ToLower();
-                string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
-                string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
-
-                switch (input) // was switch (command) but we want to handle cases like "move north" better, so we split the input into parts
+                while (running) // Game loop, will continue until player types 'quit'
                 {
-                    case "help":
-                        Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
-                        break;
+                    Console.Write("> ");
+                    string command = (Console.ReadLine() ?? "")
+                        .Trim().ToLower();
+                    string[] inputParts = command.Trim().Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
+                    string input = inputParts.Length > 0 ? inputParts[0].ToLower() : "";
 
-                    case "look":
-                        world.DisplayCurrentRoom();
-                        break;
+                    switch (input) // was switch (command) but we want to handle cases like "move north" better, so we split the input into parts
+                    {
+                        case "help":
+                            Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
+                            break;
 
-                    case "move":
-                        string direction;
-                        if (inputParts.Length > 1)
-                        {
-                            // Player typed "move north" in one go - works better for console input
-                            direction = inputParts[1].Trim().ToLower();
-                        }
-                        else
-                        {
-                            // Player just typed "move", ask for direction - keeps original
-                            Teleprinter("Which direction? (north, south, east, west): ", 5);
+                        case "look":
+                            world.DisplayCurrentRoom();
+                            break;
+
+                        case "move":
+                            string direction;
+                            if (inputParts.Length > 1)
+                            {
+                                // Player typed "move north" in one go - works better for console input
+                                direction = inputParts[1].Trim().ToLower();
+                            }
+                            else
+                            {
+                                // Player just typed "move", ask for direction - keeps original
+                                Teleprinter("Which direction? (north, south, east, west): ", 5);
+                                Console.Write("> ");
+                                direction = (Console.ReadLine() ?? "").Trim().ToLower();
+                            }
+                            world.MovePlayer(direction);
+                            world.DisplayCurrentRoom();
+                            break;
+
+                        case "pickup":
+
+                            Teleprinter("What do you want to pick up? ", 5);
                             Console.Write("> ");
-                            direction = (Console.ReadLine() ?? "").Trim().ToLower();
-                        }
-                        world.MovePlayer(direction);
-                        world.DisplayCurrentRoom();
-                        break;
+                            string itemName = Console.ReadLine() ?? "";
+                            itemName = itemName.Trim().ToLower();
 
-                    case "pickup":
-                        
-                        Teleprinter("What do you want to pick up? ", 5);
-                        Console.Write("> ");
-                        string itemName = Console.ReadLine() ?? "";
-                        itemName = itemName.Trim().ToLower();
+                            Item foundItem = null;
 
-                        Item foundItem = null;
-
-                        foreach (Item item in world.CurrentRoom.Items)
-                        {
-                            if (item.Name.ToLower() == itemName)
+                            foreach (Item item in world.CurrentRoom.Items)
                             {
-                                foundItem = item;
-                                break;
+                                if (item.Name.ToLower() == itemName)
+                                {
+                                    foundItem = item;
+                                    break;
+                                }
                             }
-                        }
-                        if (foundItem == null)
-                        {
-                            Console.WriteLine($"There is no {itemName} here.");
-                        }
-                        else if (!foundItem.CanPickup)
-                        {
-                            Console.WriteLine($"You cannot pick up {foundItem.Name}.");
-                        }
-                        else
-                        {
-                            player.PickUp(foundItem);
-                            world.CurrentRoom.Items.Remove(foundItem);
-                            Console.WriteLine($"You picked up: {foundItem.Name}");
-                        }
-                        break;
-                    //Console.Write("What do you want to pick up? ");
-                    //string itemName = Console.ReadLine() ?? ""
-                    //    .Trim().ToLower();
-
-                            //Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
-                            //if (foundItem != null)
-                            //{
-                            //    player.PickUp(foundItem);
-                            //    world.CurrentRoom.Items.Remove(foundItem);
-                            //    Console.WriteLine($"You picked up: {foundItem.Name}");
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("That item is not here.");
-                            //}
-                            //break;
-                    case "use":
-                        Teleprinter("What do you want to use? ", 5);
-                        Console.Write("> ");
-                        string useItemName = (Console.ReadLine() ?? "").Trim().ToLower();
-                        Teleprinter("What do you want to use it on? ", 5);
-                        Console.Write("> ");
-                        string targetName = (Console.ReadLine() ?? "").Trim().ToLower();
-                        Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
-                        if (useItem != null)
-                        {
-                            world.UseItem(useItem, targetName, player);
-                        }
-
-                        else
-                        {
-                            Console.WriteLine("You don't have that item.");
-                        }
-                        
-                        
-                        break;
-                    case "inventory":
-                        player.showInventory();
-                        break;
-
-                    case "inspect":
-                        string inspectTarget;
-                        if (inputParts.Length > 1)
-                        {
-                            inspectTarget = inputParts[1].Trim().ToLower();
-                            if (inspectTarget.StartsWith("the "))
+                            if (foundItem == null)
                             {
-                                inspectTarget = inspectTarget[4..].Trim();
+                                Console.WriteLine($"There is no {itemName} here.");
                             }
-                        }
-                        else
-                        {
-                            Console.Write("What do you want to inspect? ");
-                            inspectTarget = (Console.ReadLine() ?? "").Trim().ToLower();
-                        }
-
-                        if (inspectTarget.Equals("statue", StringComparison.OrdinalIgnoreCase))
-                        {
-                            world.StatuePuzzle(player);
-                        }
-                        else if (inspectTarget.Equals("journal", StringComparison.OrdinalIgnoreCase))
-                        {
-                            world.InspectJournal(player);
-                        }
-                        else if (inspectTarget.Equals("sign", StringComparison.OrdinalIgnoreCase) || inspectTarget.Equals("riddle", StringComparison.OrdinalIgnoreCase))
-                        {
-                            world.RiddlePuzzle(player);
-                        }
-                        else
-                        {
-                            Console.WriteLine("You do not notice anything unusual");
-                        }
-                        break;
-
-                    case "escape":
-                                world.FinalDoorPuzzle(player);
-                                break;
-
-                            case "quit":
-                            case "exit":
-                            case "q":
-                                running = false;
-                                Console.WriteLine("Thanks for playing!");
-                                break;
-
-                            case "cls":
-                            case "clear":
-                                ConsoleFormatter.Clear();
-                                break;
-
-                            default:
-                                Console.WriteLine("Unknown command. Type 'help' for a list of commands.");
-                                break;
+                            else if (!foundItem.CanPickup)
+                            {
+                                Console.WriteLine($"You cannot pick up {foundItem.Name}.");
                             }
+                            else
+                            {
+                                player.PickUp(foundItem);
+                                world.CurrentRoom.Items.Remove(foundItem);
+                                Console.WriteLine($"You picked up: {foundItem.Name}");
+                            }
+                            break;
+                        //Console.Write("What do you want to pick up? ");
+                        //string itemName = Console.ReadLine() ?? ""
+                        //    .Trim().ToLower();
+
+                        //Item foundItem = world.CurrentRoom.Items.Find(i => i.Name.ToLower() == itemName); //Will simplify
+                        //if (foundItem != null)
+                        //{
+                        //    player.PickUp(foundItem);
+                        //    world.CurrentRoom.Items.Remove(foundItem);
+                        //    Console.WriteLine($"You picked up: {foundItem.Name}");
+                        //}
+                        //else
+                        //{
+                        //    Console.WriteLine("That item is not here.");
+                        //}
+                        //break;
+                        case "use":
+                            Teleprinter("What do you want to use? ", 5);
+                            Console.Write("> ");
+                            string useItemName = (Console.ReadLine() ?? "").Trim().ToLower();
+                            Teleprinter("What do you want to use it on? ", 5);
+                            Console.Write("> ");
+                            string targetName = (Console.ReadLine() ?? "").Trim().ToLower();
+                            Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
+                            if (useItem != null)
+                            {
+                                world.UseItem(useItem, targetName, player);
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("You don't have that item.");
+                            }
+
+
+                            break;
+                        case "inventory":
+                            player.showInventory();
+                            break;
+
+                        case "inspect":
+                            string inspectTarget;
+                            if (inputParts.Length > 1)
+                            {
+                                inspectTarget = inputParts[1].Trim().ToLower();
+                                if (inspectTarget.StartsWith("the "))
+                                {
+                                    inspectTarget = inspectTarget[4..].Trim();
+                                }
+                            }
+                            else
+                            {
+                                Console.Write("What do you want to inspect? ");
+                                inspectTarget = (Console.ReadLine() ?? "").Trim().ToLower();
+                            }
+
+                            if (inspectTarget.Equals("statue", StringComparison.OrdinalIgnoreCase))
+                            {
+                                world.StatuePuzzle(player);
+                            }
+                            else if (inspectTarget.Equals("journal", StringComparison.OrdinalIgnoreCase))
+                            {
+                                world.InspectJournal(player);
+                            }
+                            else if (inspectTarget.Equals("sign", StringComparison.OrdinalIgnoreCase) || inspectTarget.Equals("riddle", StringComparison.OrdinalIgnoreCase))
+                            {
+                                world.RiddlePuzzle(player);
+                            }
+                            else
+                            {
+                                Console.WriteLine("You do not notice anything unusual");
+                            }
+                            break;
+
+                        case "test":
+                            Renderer.Render(GameConfig.PathAssets + "./TestFile.txt");
+                            break;
+
+                        case "escape":
+                            world.FinalDoorPuzzle(player);
+                            break;
+
+                        case "quit":
+                        case "exit":
+                        case "q":
+                            running = false;
+                            Console.WriteLine("Thanks for playing!");
+                            break;
+
+                        case "cls":
+                        case "clear":
+                            ConsoleFormatter.Clear();
+                            break;
+
+                        default:
+                            Console.WriteLine("Unknown command. Type 'help' for a list of commands.");
+                            break;
+                    }
+                }
             }
         }
     }
-}
