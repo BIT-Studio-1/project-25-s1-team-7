@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 
 using static ConsoleApp1.GraphicUtils;
-using static ConsoleApp1.Player;
 
 namespace ConsoleApp1
 {
