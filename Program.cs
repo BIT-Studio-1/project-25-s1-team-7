@@ -65,14 +65,17 @@ namespace ConsoleApp1
 
                     switch (input) // was switch (command) but we want to handle cases like "move north" better, so we split the input into parts
                     {
+                        case "h":
                         case "help":
                             Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
                             break;
 
+                        case "l":
                         case "look":
                             world.DisplayCurrentRoom();
                             break;
 
+                        case "m":
                         case "move":
                             string direction;
                             if (inputParts.Length > 1)
@@ -91,6 +94,7 @@ namespace ConsoleApp1
                             world.DisplayCurrentRoom();
                             break;
 
+                        case "p":
                         case "pickup":
 
                             Teleprinter("What do you want to pick up? ", 5);
@@ -144,10 +148,12 @@ namespace ConsoleApp1
 
 
                             break;
+                        case "inv":
                         case "inventory":
                             player.showInventory();
                             break;
 
+                    case "ins":
                         case "inspect":
                             string inspectTarget;
                             if (inputParts.Length > 1)
