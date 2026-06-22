@@ -312,7 +312,7 @@ namespace ConsoleApp1
             /// </summary>
             public static void Restore()
             {
-                Console.Write($"\u001b[0m");
+                Console.Write("\u001b[0m");
             }
 
             /// <summary>
@@ -323,11 +323,11 @@ namespace ConsoleApp1
             {
                 if (visible)
                 {
-                    Console.Write($"\u001b[?25h");
+                    Console.Write("\u001b[?25h");
                 }
                 else
                 {
-                    Console.Write($"\u001b[?25l");
+                    Console.Write("\u001b[?25l");
                 }
             }
 
