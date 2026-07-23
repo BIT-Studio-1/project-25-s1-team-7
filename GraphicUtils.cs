@@ -287,7 +287,7 @@ namespace ConsoleApp1
             /// Enable strikethrough text.
             /// </summary>
             public static void Strikethrough()
-            {
+            {f
                 Console.Write("\x1b[9m");
             }
 
