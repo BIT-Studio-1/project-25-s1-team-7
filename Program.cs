@@ -40,8 +40,18 @@ namespace ConsoleApp1
 
             ConsoleFormatter.Clear();
 
-            Console.Write("Enter your name: ");
-            string playerName = Console.ReadLine() ?? "";
+            string playerName = "";
+
+            while (string.IsNullOrWhiteSpace(playerName))
+            {
+                Console.Write("Enter your name: ");
+                playerName = Console.ReadLine() ?? "";
+
+                if (string.IsNullOrEmpty(playerName))
+                {
+                    ConsoleFormatter.Clear();
+                }
+            }
             Player player = new(playerName);
 
             ConsoleFormatter.Clear();
