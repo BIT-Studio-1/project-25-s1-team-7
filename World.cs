@@ -219,7 +219,9 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("You light the torch! The room brightens and you notice a blue key hanging on the wall.");
                     // Add Key 1 to the room for player to pick up
-                    CurrentRoom.Items.Add(new Item("blue key", "A mysterious blue key, the first step to getting out.", true));
+                    Item bluekey = new Item("blue key", "A mysterious blue key, the first step to getting out.", true);
+                    player.PickUp(bluekey);
+                    Teleprinter("You pick up the blue key", 5);
                 }
                 else
                 {
