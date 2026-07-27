@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -365,7 +364,7 @@ namespace ConsoleApp1
         /// <param name="stringInput"></param>
         /// <param name="delay"></param>
         /// <param name="cursorVisible"></param>
-        public static void Teleprinter(string stringInput, int delay, [Optional] bool cursorVisible)
+        public static void Teleprinter(string stringInput, int delay, bool cursorVisible = false)
         {
             if (cursorVisible == false)
             {
@@ -401,7 +400,7 @@ namespace ConsoleApp1
         /// <param name="filePath"></param>
         /// <param name="delay"></param>
         /// <param name="cursorVisible"></param>
-        public static void TeleprinterFromFile(string filePath, int delay, [Optional] bool cursorVisible)
+        public static void TeleprinterFromFile(string filePath, int delay, bool cursorVisible = false)
         {
             if (cursorVisible == false)
             {
