@@ -309,9 +309,9 @@ namespace ConsoleApp1
             /// <summary>
             /// Restore all graphics back to default.
             /// </summary>
-            public static void Restore()
+            public static string Restore()
             {
-                Console.Write("\u001b[0m");
+                return("\u001b[0m");
             }
 
             /// <summary>
