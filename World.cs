@@ -94,7 +94,8 @@ namespace ConsoleApp1
         {
             Renderer.Render(CurrentRoom.scenePath);
 
-            Console.WriteLine($"Current room: {CurrentRoom.Name}");
+            Console.WriteLine($"Current room: {ConsoleFormatter.Italic() + CurrentRoom.Name}");
+            ConsoleFormatter.Restore();
             Console.WriteLine(CurrentRoom.Description);
             if (CurrentRoom.Items.Count > 0)
             {
