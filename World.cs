@@ -51,7 +51,7 @@ namespace ConsoleApp1
             //Add items to rooms here. Items hardcoded for ease of use. Populating rooms with items dynamically not necessary.
 
             // Item Section 1
-            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit", false));
+            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books", false));
             _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it.", true));
             _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes", true));
             _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n", true));
@@ -66,13 +66,13 @@ namespace ConsoleApp1
             _mapGrid[0, 2].Items.Add(new Item("Sign", "The sign reads: \"I have these 3 numbers: 4, 2, and 7. You need to use them to result in the answer somehow...\"", false));
 
             // Item Section 4
-            _mapGrid[1, 0].Items.Add(new Item("Chest", "unlocked and has heaps of turnips, not useful, but there seems to be a sword in there too, weird place to keep it but hey.", false));
+            _mapGrid[1, 0].Items.Add(new Item("Chest", "unlocked and has heaps of turnips, not useful", false));
             _mapGrid[1, 0].Items.Add(new Item("Sword", "Very pointy, ouch.", true));
 
             // Item Section 5
-            _mapGrid[1, 1].Items.Add(new Item("Table", "Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox and a bottle of water.", false));
+            _mapGrid[1, 1].Items.Add(new Item("Table", "Shifty looking table that is somehow still standing. Found in the center of the room, on it, may lie items of interest...", false));
             _mapGrid[1, 1].Items.Add(new Item("Matchbox", "Found on the table, can be used to light the torch.", true));
-            _mapGrid[1, 1].Items.Add(new Item("Bottle of Water", "might be helpful for making some soup, wonder if there are any recipes around....", true));
+            _mapGrid[1, 1].Items.Add(new Item("Bottle of Water", "Located on the table, might be helpful for making some soup, wonder if there are any recipes around....", true));
 
             // Item Section 6
             _mapGrid[1, 2].Items.Add(new Item("Torch", "Can be lit to reveal things you may have missed.", true));
@@ -82,7 +82,7 @@ namespace ConsoleApp1
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents.", false));
 
             // Item Section 8
-            _mapGrid[2, 1].Items.Add(new Item("Statue", "Holding Key 2, it's eyes seem to follow you around the room.", false));
+            _mapGrid[2, 1].Items.Add(new Item("Statue", "It's eyes seem to follow you around the room. Maybe it holds the second key?", false));
             //_mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
             // Item Section 9
             _mapGrid[2, 2].Items.Add(new Item("Crate", "Sealed shut, might need something to open it.", false));
