@@ -94,12 +94,19 @@ namespace ConsoleApp1
         {
             Renderer.Render(CurrentRoom.scenePath);
 
-            Console.WriteLine($"""
-                Current Room: {CurrentRoom.Name}
+            //Console.WriteLine($"""
+            //    Current Room: {ConsoleFormatter.Invert() + CurrentRoom.Name + ConsoleFormatter.Restore()}
 
-                {CurrentRoom.Description}
+            //    {CurrentRoom.Description}
 
-                """);
+            //    """);
+
+            Teleprinter($"""
+                Current Room: {ConsoleFormatter.ForegroundColor(255, 255, 0) + CurrentRoom.Name + ConsoleFormatter.Restore()}
+
+                {ConsoleFormatter.Italic() + CurrentRoom.Description + ConsoleFormatter.Restore()}
+
+                """, 1);
 
             //Console.WriteLine($"Current room: {ConsoleFormatter.Blink() + CurrentRoom.Name + ConsoleFormatter.Restore()}");
             //Console.WriteLine(CurrentRoom.Description);
@@ -108,15 +115,15 @@ namespace ConsoleApp1
                 Console.WriteLine("You see the following items:");
                 foreach (var item in CurrentRoom.Items)
                 {
-                    Console.WriteLine($"- {item.Name}: {item.Description}");
+                    Console.WriteLine($"- {ConsoleFormatter.ForegroundColor(0, 255, 0) + item.Name + ConsoleFormatter.Restore()}: {item.Description}");
                 }
             }
             else
             {
-                Console.WriteLine("There are no items in this room.");
+                Console.WriteLine($"{ConsoleFormatter.ForegroundColor(255, 0, 0)}There are no items in this room. {ConsoleFormatter.Restore()}");
             }
 
-            Console.WriteLine(""); // Chuck a blank line in there for seperation between the items list and directions.
+            Console.WriteLine(""); // Chuck a blank line in there for separation between the items list and directions.
 
             DisplayAvailableDirections();
         }
