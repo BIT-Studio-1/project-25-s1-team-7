@@ -94,9 +94,15 @@ namespace ConsoleApp1
         {
             Renderer.Render(CurrentRoom.scenePath);
 
-            Console.WriteLine($"Current room: {ConsoleFormatter.Italic() + CurrentRoom.Name}");
-            ConsoleFormatter.Restore();
-            Console.WriteLine(CurrentRoom.Description);
+            Console.WriteLine($"""
+                Current Room: {CurrentRoom.Name}
+
+                {CurrentRoom.Description}
+
+                """);
+
+            //Console.WriteLine($"Current room: {ConsoleFormatter.Blink() + CurrentRoom.Name + ConsoleFormatter.Restore()}");
+            //Console.WriteLine(CurrentRoom.Description);
             if (CurrentRoom.Items.Count > 0)
             {
                 Console.WriteLine("You see the following items:");
@@ -109,6 +115,8 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("There are no items in this room.");
             }
+
+            Console.WriteLine(""); // Chuck a blank line in there for seperation between the items list and directions.
 
             DisplayAvailableDirections();
         }
