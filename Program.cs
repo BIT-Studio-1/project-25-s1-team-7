@@ -23,20 +23,20 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            //PlayTitleScreen();
+            PlayTitleScreen();
 
-            //Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
 
-            //Teleprinter("""
-            //    Hello! Before you start, please full screen the console for the best experience.
+            Teleprinter("""
+                Hello! Before you start, please full screen the console for the best experience.
 
-            //    If you don't, things might break!
+                If you don't, things might break!
 
-            //    Press any key to continue...
+                Press any key to continue...
 
-            //    """, 5);
+                """, 5);
 
-            //Console.ReadKey(true);
+            Console.ReadKey(true);
 
             ConsoleFormatter.Clear();
 
@@ -59,13 +59,13 @@ namespace ConsoleApp1
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
             bool running = true;
-            //Teleprinter("""
-            //    You slowly regain consciousness - you realize you are imprisoned. 
-                                
-            //    Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
-            //    """, 5);
-            //Thread.Sleep(1000);
-                while (running) // Game loop, will continue until player types 'quit'
+            Teleprinter("""
+                You slowly regain consciousness - you realize you are imprisoned. 
+
+                Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
+                """, 5);
+            Thread.Sleep(1000);
+            while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
                     string command = (Console.ReadLine() ?? "")
