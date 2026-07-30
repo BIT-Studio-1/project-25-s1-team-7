@@ -174,7 +174,7 @@ namespace ConsoleApp1
         public void DisplayAvailableDirections()
         {
             var directions = GetAvailableDirections();
-            Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
+            Console.WriteLine("Available directions to move: " + string.Join(", ", directions) + "\n");
         }
 
         private string NormalizeDirection(string direction)
