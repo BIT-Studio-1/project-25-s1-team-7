@@ -61,11 +61,11 @@ namespace ConsoleApp1
             bool running = true;
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
-                                
+
                 Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
-                while (running) // Game loop, will continue until player types 'quit'
+            while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
                     string command = (Console.ReadLine() ?? "")
@@ -204,6 +204,10 @@ namespace ConsoleApp1
 
                         case "escape":
                             world.FinalDoorPuzzle(player);
+                            break;
+
+                        case "map":
+                            world.DisplayMap();
                             break;
 
                         case "quit":

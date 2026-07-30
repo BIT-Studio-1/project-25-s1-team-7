@@ -218,9 +218,9 @@ namespace ConsoleApp1
             /// <param name="r"></param>
             /// <param name="g"></param>
             /// <param name="b"></param>
-            public static void ForegroundColor(int r, int g, int b)
+            public static string ForegroundColor(int r, int g, int b)
             {
-                Console.Write($"\u001b[38;2;{r};{g};{b}m");
+                return($"\u001b[38;2;{r};{g};{b}m");
             }
 
             /// <summary>
@@ -229,65 +229,65 @@ namespace ConsoleApp1
             /// <param name="r"></param>
             /// <param name="g"></param>
             /// <param name="b"></param>
-            public static void BackgroundColor(int r, int g, int b)
+            public static string BackgroundColor(int r, int g, int b)
             {
-                Console.Write($"\u001b[48;2;{r};{g};{b}m");
+                return($"\u001b[48;2;{r};{g};{b}m");
             }
 
             /// <summary>
             /// Enable bold text.
             /// </summary>
-            public static void Bold()
+            public static string Bold()
             {
-                Console.Write("\x1b[1m");
+                return("\x1b[1m");
             }
 
             /// <summary>
             /// Enable dim text.
             /// </summary>
-            public static void Dim()
+            public static string Dim()
             {
-                Console.Write("\x1b[2m");
+                return("\x1b[2m");
             }
 
             /// <summary>
             /// Enable italic text.
             /// </summary>
-            public static void Italic()
+            public static string Italic()
             {
-                Console.Write("\x1b[3m");
+                return("\x1b[3m");
             }
 
             /// <summary>
             /// Enable underlined text.
             /// </summary>
-            public static void Underline()
+            public static string Underline()
             {
-                Console.Write("\x1b[4m");
+                return("\x1b[4m");
             }
 
             /// <summary>
             /// Enable blinking text.
             /// </summary>
-            public static void Blink()
+            public static string Blink()
             {
-                Console.Write("\x1b[5m");
+                return("\x1b[5m");
             }
 
             /// <summary>
             /// Invert foreground and background colors.
             /// </summary>
-            public static void Invert()
+            public static string Invert()
             {
-                Console.Write("\x1b[7m");
+                return("\x1b[7m");
             }
 
             /// <summary>
             /// Enable strikethrough text.
             /// </summary>
-            public static void Strikethrough()
+            public static string Strikethrough()
             {
-                Console.Write("\x1b[9m");
+                return("\x1b[9m");
             }
 
             /// <summary>
@@ -309,9 +309,9 @@ namespace ConsoleApp1
             /// <summary>
             /// Restore all graphics back to default.
             /// </summary>
-            public static void Restore()
+            public static string Restore()
             {
-                Console.Write("\u001b[0m");
+                return("\u001b[0m");
             }
 
             /// <summary>
