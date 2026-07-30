@@ -32,9 +32,9 @@ namespace ConsoleApp1
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
 
             //Section 1
-            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, GameConfig.PathAssets + "\\walls\\north_west_corner.txt", GameConfig.PathAssets + "\\map\\north_west_corner.txt");
-            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, GameConfig.PathAssets + "\\walls\\north_wall.txt", GameConfig.PathAssets + "\\map\\north_wall.txt");
-            _mapGrid[0, 2] = new Room("Dusty Library", "Shelves of rotting books line the walls. Something feels off.", 2, GameConfig.PathAssets + "\\walls\\north_east_corner.txt", GameConfig.PathAssets + "\\map\\north_east_corner.txt");
+            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, GameConfig.PathAssets + "\\walls\\north_west_corner.txt");
+            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, GameConfig.PathAssets + "\\walls\\north_wall.txt");
+            _mapGrid[0, 2] = new Room("Dusty Library", "This room is empty apart from a battered sign. Strange for a library. Something feels off.", 2, GameConfig.PathAssets + "\\walls\\north_east_corner.txt");
             //Section 2
             _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, GameConfig.PathAssets + "\\walls\\west_wall.txt", GameConfig.PathAssets + "\\map\\west_wall.txt");
             _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, GameConfig.PathAssets + "\\map\\main_map.txt", GameConfig.PathAssets + "\\map\\middle.txt");
