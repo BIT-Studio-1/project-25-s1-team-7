@@ -23,20 +23,20 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            PlayTitleScreen();
+            //PlayTitleScreen();
 
-            Console.OutputEncoding = Encoding.UTF8;
+            //Console.OutputEncoding = Encoding.UTF8;
 
-            Teleprinter("""
-                Hello! Before you start, please full screen the console for the best experience.
+            //Teleprinter("""
+            //    Hello! Before you start, please full screen the console for the best experience.
 
-                If you don't, things might break!
+            //    If you don't, things might break!
 
-                Press any key to continue...
+            //    Press any key to continue...
 
-                """, 5);
+            //    """, 5);
 
-            Console.ReadKey(true);
+            //Console.ReadKey(true);
 
             ConsoleFormatter.Clear();
 
