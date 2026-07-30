@@ -36,13 +36,13 @@ namespace ConsoleApp1
             _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, GameConfig.PathAssets + "\\walls\\north_wall.txt");
             _mapGrid[0, 2] = new Room("Dusty Library", "This room is empty apart from a battered sign. Strange for a library. Something feels off.", 2, GameConfig.PathAssets + "\\walls\\north_east_corner.txt");
             //Section 2
-            _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, GameConfig.PathAssets + "\\walls\\west_wall.txt");
-            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, GameConfig.PathAssets + "\\map\\main_map.txt");
-            _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, GameConfig.PathAssets + "\\walls\\east_wall.txt");
+            _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, GameConfig.PathAssets + "\\walls\\west_wall.txt", GameConfig.PathAssets + "\\map\\west_wall.txt");
+            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, GameConfig.PathAssets + "\\map\\main_map.txt", GameConfig.PathAssets + "\\map\\middle.txt");
+            _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, GameConfig.PathAssets + "\\walls\\east_wall.txt", GameConfig.PathAssets + "\\map\\east_wall.txt");
             //Section 3
-            _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, GameConfig.PathAssets + "\\walls\\south_west_corner.txt");
-            _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, GameConfig.PathAssets + "\\walls\\south_wall.txt");
-            _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, GameConfig.PathAssets + "\\walls\\south_east_corner.txt");
+            _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, GameConfig.PathAssets + "\\walls\\south_west_corner.txt", GameConfig.PathAssets + "\\map\\south_west_corner.txt");
+            _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, GameConfig.PathAssets + "\\walls\\south_wall.txt", GameConfig.PathAssets + "\\map\\south_wall.txt");
+            _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, GameConfig.PathAssets + "\\walls\\south_east_corner.txt", GameConfig.PathAssets + "\\map\\south_east_corner.txt");
 
             //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
             _mapGrid[0, 0].isLocked = true; // Exit room, needs all 4 keys
@@ -51,7 +51,7 @@ namespace ConsoleApp1
             //Add items to rooms here. Items hardcoded for ease of use. Populating rooms with items dynamically not necessary.
 
             // Item Section 1
-            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books, among them, 'Book on being wicked', 'brewing up broth - a cooking guide' which holds notes about mixing herbs and water in a lit", false));
+            _mapGrid[0, 0].Items.Add(new Item("Bookshelf", "Holds plenty of books", false));
             _mapGrid[0, 0].Items.Add(new Item("Book on being wicked", "contains text that says 'Mwahahahahahaha' and that's it.", true));
             _mapGrid[0, 0].Items.Add(new Item("Brewing up Broth", "a cooking guide - contains many soupy recipes", true));
             _mapGrid[0, 0].Items.Add(new Item("Journal", "holds random notes and a bookmarked page that reads \"the answer is the third number, minus the first, times the second, plus the first\"\r\n", true));
@@ -66,13 +66,13 @@ namespace ConsoleApp1
             _mapGrid[0, 2].Items.Add(new Item("Sign", "The sign reads: \"I have these 3 numbers: 4, 2, and 7. You need to use them to result in the answer somehow...\"", false));
 
             // Item Section 4
-            _mapGrid[1, 0].Items.Add(new Item("Chest", "unlocked and has heaps of turnips, not useful, but there seems to be a sword in there too, weird place to keep it but hey.", false));
+            _mapGrid[1, 0].Items.Add(new Item("Chest", "unlocked and has heaps of turnips, not useful", false));
             _mapGrid[1, 0].Items.Add(new Item("Sword", "Very pointy, ouch.", true));
 
             // Item Section 5
-            _mapGrid[1, 1].Items.Add(new Item("Table", "Shifty looking table that is somehow still standing. Found in the centre of the room, on it, is the matchbox and a bottle of water.", false));
+            _mapGrid[1, 1].Items.Add(new Item("Table", "Shifty looking table that is somehow still standing. Found in the center of the room, on it, may lie items of interest...", false));
             _mapGrid[1, 1].Items.Add(new Item("Matchbox", "Found on the table, can be used to light the torch.", true));
-            _mapGrid[1, 1].Items.Add(new Item("Bottle of Water", "might be helpful for making some soup, wonder if there are any recipes around....", true));
+            _mapGrid[1, 1].Items.Add(new Item("Bottle of Water", "Located on the table, might be helpful for making some soup, wonder if there are any recipes around....", true));
 
             // Item Section 6
             _mapGrid[1, 2].Items.Add(new Item("Torch", "Can be lit to reveal things you may have missed.", true));
@@ -82,32 +82,52 @@ namespace ConsoleApp1
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents.", false));
 
             // Item Section 8
-            _mapGrid[2, 1].Items.Add(new Item("Statue", "Holding Key 2, it's eyes seem to follow you around the room.", false));
+            _mapGrid[2, 1].Items.Add(new Item("Statue", "It's eyes seem to follow you around the room. Maybe it holds the second key?", false));
             //_mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
             // Item Section 9
             _mapGrid[2, 2].Items.Add(new Item("Crate", "Sealed shut, might need something to open it.", false));
             _mapGrid[2, 2].Items.Add(new Item("Unknown Herbs", "Strange herbs, not sure what they do.", true));
         }
 
+        public void DisplayMap()
+        {
+            Renderer.Render(CurrentRoom.mapPath);
+        }
 
         public void DisplayCurrentRoom()
         {
             Renderer.Render(CurrentRoom.scenePath);
 
-            Console.WriteLine($"Current room: {CurrentRoom.Name}");
-            Console.WriteLine(CurrentRoom.Description);
+            //Console.WriteLine($"""
+            //    Current Room: {ConsoleFormatter.Invert() + CurrentRoom.Name + ConsoleFormatter.Restore()}
+
+            //    {CurrentRoom.Description}
+
+            //    """);
+
+            Teleprinter($"""
+                Current Room: {ConsoleFormatter.ForegroundColor(255, 255, 0) + CurrentRoom.Name + ConsoleFormatter.Restore()}
+
+                {ConsoleFormatter.Italic() + CurrentRoom.Description + ConsoleFormatter.Restore()}
+
+                """, 1);
+
+            //Console.WriteLine($"Current room: {ConsoleFormatter.Blink() + CurrentRoom.Name + ConsoleFormatter.Restore()}");
+            //Console.WriteLine(CurrentRoom.Description);
             if (CurrentRoom.Items.Count > 0)
             {
                 Console.WriteLine("You see the following items:");
                 foreach (var item in CurrentRoom.Items)
                 {
-                    Console.WriteLine($"- {item.Name}: {item.Description}");
+                    Console.WriteLine($"- {ConsoleFormatter.ForegroundColor(0, 255, 0) + item.Name + ConsoleFormatter.Restore()}: {item.Description}");
                 }
             }
             else
             {
-                Console.WriteLine("There are no items in this room.");
+                Console.WriteLine($"{ConsoleFormatter.ForegroundColor(255, 0, 0)}There are no items in this room. {ConsoleFormatter.Restore()}");
             }
+
+            Console.WriteLine(""); // Chuck a blank line in there for separation between the items list and directions.
 
             DisplayAvailableDirections();
         }
@@ -165,7 +185,7 @@ namespace ConsoleApp1
         public void DisplayAvailableDirections()
         {
             var directions = GetAvailableDirections();
-            Console.WriteLine("Available directions to move: " + string.Join(", ", directions));
+            Console.WriteLine("Available directions to move: " + string.Join(", ", directions) + "\n");
         }
 
         private string NormalizeDirection(string direction)

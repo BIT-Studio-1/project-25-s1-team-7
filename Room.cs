@@ -15,13 +15,15 @@ namespace ConsoleApp1
         public bool isLocked { get; set; }
         public bool isEscaped { get; set; } = false;
         public string scenePath { get; set; }
+        public string mapPath { get; set; }
 
-        public Room(string name, string description, int difficulty, string ScenePath)
+        public Room(string name, string description, int difficulty, string ScenePath, string MapPath)
         {
             Name = name;
             Description = description;
             Difficulty = difficulty; //Unused currently
             scenePath = ScenePath;
+            mapPath = MapPath;
         }
 
         public bool AttemptEscape(Player player)
