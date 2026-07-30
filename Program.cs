@@ -206,6 +206,10 @@ namespace ConsoleApp1
                             world.FinalDoorPuzzle(player);
                             break;
 
+                        case "map":
+                            world.DisplayMap();
+                            break;
+
                         case "quit":
                         case "exit":
                         case "q":
