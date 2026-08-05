@@ -26,28 +26,24 @@ namespace ConsoleApp1
         {
             _mapGrid = new Room[3, 3];
 
-            //Last integer value is room difficulty. Unsure if this is a good idea to implement though, just in terms of keeping things simple.
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
 
             //Section 1
             _mapGrid[0, 0] = new Room(
                 "Entrance Hall",
                 "A heavy door slams shut behind you. The air is cold and stale.",
-                1,
                 GameConfig.PathAssets + "\\walls\\north_west_corner.txt",
                 GameConfig.PathAssets + "\\map\\north_west_corner.txt");
 
             _mapGrid[0, 1] = new Room(
                 "Stone Cell",
                 "Damp walls surround you. Scratch marks cover the stone floor.",
-                1,
                 GameConfig.PathAssets + "\\walls\\north_wall.txt",
                 GameConfig.PathAssets + "\\map\\north_wall.txt");
 
             _mapGrid[0, 2] = new Room(
                 "Dusty Library",
                 "This room is empty apart from a battered sign. Strange for a library. Something feels off.",
-                2,
                 GameConfig.PathAssets + "\\walls\\north_east_corner.txt",
                 GameConfig.PathAssets + "\\map\\north_east_corner.txt");
 
@@ -55,21 +51,18 @@ namespace ConsoleApp1
             _mapGrid[1, 0] = new Room(
                 "Flooded Basement",
                 "Ankle deep water covers the floor. A faint dripping echoes.",
-                2,
                 GameConfig.PathAssets + "\\walls\\west_wall.txt",
                 GameConfig.PathAssets + "\\map\\west_wall.txt");
 
             _mapGrid[1, 1] = new Room(
                 "Guard's Quarters",
                 "An empty cot and rusted armour stand in the corner.",
-                3,
                 GameConfig.PathAssets + "\\map\\main_map.txt",
                 GameConfig.PathAssets + "\\map\\middle.txt");
 
             _mapGrid[1, 2] = new Room(
                 "Candlelit Chapel",
                 "Candles flicker despite no wind. The exit door is ahead.",
-                3,
                 GameConfig.PathAssets + "\\walls\\east_wall.txt",
                 GameConfig.PathAssets + "\\map\\east_wall.txt");
 
@@ -77,21 +70,18 @@ namespace ConsoleApp1
             _mapGrid[2, 0] = new Room(
                 "Kitchen",
                 "A cold hearth and empty pots. Something smells rotten.",
-                2,
                 GameConfig.PathAssets + "\\walls\\south_west_corner.txt",
                 GameConfig.PathAssets + "\\map\\south_west_corner.txt");
 
             _mapGrid[2, 1] = new Room(
                 "Dining Hall",
                 "A long table set for a feast that never happened.",
-                2,
                 GameConfig.PathAssets + "\\walls\\south_wall.txt",
                 GameConfig.PathAssets + "\\map\\south_wall.txt");
 
             _mapGrid[2, 2] = new Room(
                 "Trophy Room",
                 "Hunting trophies stare down at you from the walls.",
-                3,
                 GameConfig.PathAssets + "\\walls\\south_east_corner.txt",
                 GameConfig.PathAssets + "\\map\\south_east_corner.txt");
 
