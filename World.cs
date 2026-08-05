@@ -381,9 +381,6 @@ namespace ConsoleApp1
             Item? cauldron = CurrentRoom.Items.Find(item =>
                 item.Name.Equals("Cauldron", StringComparison.OrdinalIgnoreCase));
 
-            //Item? key = CurrentRoom.Items.Find(item =>
-            //    item.Name.Equals("purple key", StringComparison.OrdinalIgnoreCase));
-
             if (!isInCauldronRoom || cauldron == null)
             {
                 Console.WriteLine("There is no cauldron here.");
@@ -408,13 +405,16 @@ namespace ConsoleApp1
                 return false;
             }
 
-            Console.WriteLine("You pour the water into the cauldron.");
-            Console.WriteLine("You add the unknown herbs.");
-            Console.WriteLine();
-            Console.WriteLine("The mixture begins to bubble violently...");
-            Console.WriteLine("Steam fills the room.");
-            Console.WriteLine("As the liquid evaporates, something gleams at the bottom.");
-            Console.WriteLine();
+            Teleprinter("""
+                You pour the water into the cauldron.
+
+                You add the unknown herbs.
+
+                The mixture begins to bubble violently...
+                Steam fills the room.
+                As the liquid evaporates, something gleams at the bottom.
+
+                """, 5);
 
             player.Inventory.Remove(waterBottle);
             player.Inventory.Remove(herbs);
