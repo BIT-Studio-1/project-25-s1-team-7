@@ -11,17 +11,15 @@ namespace ConsoleApp1
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Item> Items { get; set; } = new List<Item>();
-        public int Difficulty { get; set; }
         public bool isLocked { get; set; }
         public bool isEscaped { get; set; } = false;
         public string scenePath { get; set; }
         public string mapPath { get; set; }
 
-        public Room(string name, string description, int difficulty, string ScenePath, string MapPath)
+        public Room(string name, string description, string ScenePath, string MapPath)
         {
             Name = name;
             Description = description;
-            Difficulty = difficulty; //Unused currently
             scenePath = ScenePath;
             mapPath = MapPath;
         }
@@ -42,18 +40,3 @@ namespace ConsoleApp1
         }
     }
 }
-//        public void UseItem(Player player, string target, Item item)
-//        {
-//            if (Items.Contains(item))
-//            {
-//                Console.WriteLine($"You used {item.Name} on {target}.");
-//                // Implement logic for using the item on the target
-//                // For example, if the item is a key and the target is a door, you could unlock the door
-//            }
-//            else
-//            {
-//                Console.WriteLine($"You don't have {item.Name} in this room.");
-//            }
-//        }
-//    }
-//}
