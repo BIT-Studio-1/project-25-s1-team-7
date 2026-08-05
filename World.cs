@@ -98,13 +98,6 @@ namespace ConsoleApp1
         {
             Renderer.Render(CurrentRoom.scenePath);
 
-            //Console.WriteLine($"""
-            //    Current Room: {ConsoleFormatter.Invert() + CurrentRoom.Name + ConsoleFormatter.Restore()}
-
-            //    {CurrentRoom.Description}
-
-            //    """);
-
             Teleprinter($"""
                 Current Room: {ConsoleFormatter.ForegroundColor(255, 255, 0) + CurrentRoom.Name + ConsoleFormatter.Restore()}
 
@@ -112,8 +105,6 @@ namespace ConsoleApp1
 
                 """, 1);
 
-            //Console.WriteLine($"Current room: {ConsoleFormatter.Blink() + CurrentRoom.Name + ConsoleFormatter.Restore()}");
-            //Console.WriteLine(CurrentRoom.Description);
             if (CurrentRoom.Items.Count > 0)
             {
                 Console.WriteLine("You see the following items:");
