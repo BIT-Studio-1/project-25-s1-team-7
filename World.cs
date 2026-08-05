@@ -19,8 +19,6 @@ namespace ConsoleApp1
         private bool _statuePuzzleSolved = false;
         private bool _cauldronPuzzleSolved = false;
 
-
-
         //Call this to display current room via World class ie - "Current room: {world.CurrentRoom}";
         public Room CurrentRoom => _mapGrid[_playerRow, _playerCol];
 
@@ -32,17 +30,70 @@ namespace ConsoleApp1
             //Add more rooms and room details here. Rooms hardcoded for ease of use. Populating world grid dynamically not necessary.
 
             //Section 1
-            _mapGrid[0, 0] = new Room("Entrance Hall", "A heavy door slams shut behind you. The air is cold and stale.", 1, GameConfig.PathAssets + "\\walls\\north_west_corner.txt", GameConfig.PathAssets + "\\map\\north_west_corner.txt");
-            _mapGrid[0, 1] = new Room("Stone Cell", "Damp walls surround you. Scratch marks cover the stone floor.", 1, GameConfig.PathAssets + "\\walls\\north_wall.txt", GameConfig.PathAssets + "\\map\\north_wall.txt");
-            _mapGrid[0, 2] = new Room("Dusty Library", "This room is empty apart from a battered sign. Strange for a library. Something feels off.", 2, GameConfig.PathAssets + "\\walls\\north_east_corner.txt", GameConfig.PathAssets + "\\map\\north_east_corner.txt");
+            _mapGrid[0, 0] = new Room(
+                "Entrance Hall",
+                "A heavy door slams shut behind you. The air is cold and stale.",
+                1,
+                GameConfig.PathAssets + "\\walls\\north_west_corner.txt",
+                GameConfig.PathAssets + "\\map\\north_west_corner.txt");
+
+            _mapGrid[0, 1] = new Room(
+                "Stone Cell",
+                "Damp walls surround you. Scratch marks cover the stone floor.",
+                1,
+                GameConfig.PathAssets + "\\walls\\north_wall.txt",
+                GameConfig.PathAssets + "\\map\\north_wall.txt");
+
+            _mapGrid[0, 2] = new Room(
+                "Dusty Library",
+                "This room is empty apart from a battered sign. Strange for a library. Something feels off.",
+                2,
+                GameConfig.PathAssets + "\\walls\\north_east_corner.txt",
+                GameConfig.PathAssets + "\\map\\north_east_corner.txt");
+
             //Section 2
-            _mapGrid[1, 0] = new Room("Flooded Basement", "Ankle deep water covers the floor. A faint dripping echoes.", 2, GameConfig.PathAssets + "\\walls\\west_wall.txt", GameConfig.PathAssets + "\\map\\west_wall.txt");
-            _mapGrid[1, 1] = new Room("Guard's Quarters", "An empty cot and rusted armour stand in the corner.", 3, GameConfig.PathAssets + "\\map\\main_map.txt", GameConfig.PathAssets + "\\map\\middle.txt");
-            _mapGrid[1, 2] = new Room("Candlelit Chapel", "Candles flicker despite no wind. The exit door is ahead.", 3, GameConfig.PathAssets + "\\walls\\east_wall.txt", GameConfig.PathAssets + "\\map\\east_wall.txt");
+            _mapGrid[1, 0] = new Room(
+                "Flooded Basement",
+                "Ankle deep water covers the floor. A faint dripping echoes.",
+                2,
+                GameConfig.PathAssets + "\\walls\\west_wall.txt",
+                GameConfig.PathAssets + "\\map\\west_wall.txt");
+
+            _mapGrid[1, 1] = new Room(
+                "Guard's Quarters",
+                "An empty cot and rusted armour stand in the corner.",
+                3,
+                GameConfig.PathAssets + "\\map\\main_map.txt",
+                GameConfig.PathAssets + "\\map\\middle.txt");
+
+            _mapGrid[1, 2] = new Room(
+                "Candlelit Chapel",
+                "Candles flicker despite no wind. The exit door is ahead.",
+                3,
+                GameConfig.PathAssets + "\\walls\\east_wall.txt",
+                GameConfig.PathAssets + "\\map\\east_wall.txt");
+
             //Section 3
-            _mapGrid[2, 0] = new Room("Kitchen", "A cold hearth and empty pots. Something smells rotten.", 2, GameConfig.PathAssets + "\\walls\\south_west_corner.txt", GameConfig.PathAssets + "\\map\\south_west_corner.txt");
-            _mapGrid[2, 1] = new Room("Dining Hall", "A long table set for a feast that never happened.", 2, GameConfig.PathAssets + "\\walls\\south_wall.txt", GameConfig.PathAssets + "\\map\\south_wall.txt");
-            _mapGrid[2, 2] = new Room("Trophy Room", "Hunting trophies stare down at you from the walls.", 3, GameConfig.PathAssets + "\\walls\\south_east_corner.txt", GameConfig.PathAssets + "\\map\\south_east_corner.txt");
+            _mapGrid[2, 0] = new Room(
+                "Kitchen",
+                "A cold hearth and empty pots. Something smells rotten.",
+                2,
+                GameConfig.PathAssets + "\\walls\\south_west_corner.txt",
+                GameConfig.PathAssets + "\\map\\south_west_corner.txt");
+
+            _mapGrid[2, 1] = new Room(
+                "Dining Hall",
+                "A long table set for a feast that never happened.",
+                2,
+                GameConfig.PathAssets + "\\walls\\south_wall.txt",
+                GameConfig.PathAssets + "\\map\\south_wall.txt");
+
+            _mapGrid[2, 2] = new Room(
+                "Trophy Room",
+                "Hunting trophies stare down at you from the walls.",
+                3,
+                GameConfig.PathAssets + "\\walls\\south_east_corner.txt",
+                GameConfig.PathAssets + "\\map\\south_east_corner.txt");
 
             //Example of a locked room. Can swap bool value of any room to false to unlock if logic conditions in main script met.
             _mapGrid[0, 0].isLocked = true; // Exit room, needs all 4 keys
@@ -62,7 +113,6 @@ namespace ConsoleApp1
 
             // Item Section 3
 
-            //_mapGrid[0, 2].Items.Add(new Item("")); - NPC (or sign - more realistic for the timeframe)
             _mapGrid[0, 2].Items.Add(new Item("Sign", "The sign reads: \"I have these 3 numbers: 4, 2, and 7. You need to use them to result in the answer somehow...\"", false));
 
             // Item Section 4
@@ -76,14 +126,13 @@ namespace ConsoleApp1
 
             // Item Section 6
             _mapGrid[1, 2].Items.Add(new Item("Torch", "Can be lit to reveal things you may have missed.", true));
-            //_mapGrid[1, 2].Items.Add(new Item("Key 1", "A mysterious blue key, the first step to getting out.", true));
 
             // Item Section 7
             _mapGrid[2, 0].Items.Add(new Item("Cauldron", "A large cauldron, bubbling with unknown contents.", false));
 
             // Item Section 8
             _mapGrid[2, 1].Items.Add(new Item("Statue", "It's eyes seem to follow you around the room. Maybe it holds the second key?", false));
-            //_mapGrid[2, 1].Items.Add(new Item("Key 2", "A glowing red key that could help you open that door.", true));
+
             // Item Section 9
             _mapGrid[2, 2].Items.Add(new Item("Crate", "Sealed shut, might need something to open it.", false));
             _mapGrid[2, 2].Items.Add(new Item("Unknown Herbs", "Strange herbs, not sure what they do.", true));
