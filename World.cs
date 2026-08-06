@@ -263,7 +263,7 @@ namespace ConsoleApp1
         {
             if (item.Name.ToLower() == "matchbox" && target == "torch")
             {
-                // Check player has the torch too
+
                 Item torch = player.Inventory.Find(i => i.Name.ToLower() == "torch");
                 if (torch != null)
                 {
