@@ -62,7 +62,7 @@ namespace ConsoleApp1
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
 
-                Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
+                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
             while (running) // Game loop, will continue until player types 'quit'
