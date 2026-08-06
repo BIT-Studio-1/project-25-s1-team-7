@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 
 // Utilities
 using static ConsoleApp1.GraphicUtils;
@@ -56,6 +57,7 @@ namespace ConsoleApp1
 
             ConsoleFormatter.Clear();
 
+
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
             bool running = true;
@@ -65,6 +67,10 @@ namespace ConsoleApp1
                 Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
+
+            // Create and start game timer
+            Stopwatch timer = new();
+
             while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
