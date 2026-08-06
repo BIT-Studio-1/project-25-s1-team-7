@@ -77,7 +77,7 @@ namespace ConsoleApp1
                     {
                         case "h":
                         case "help":
-                            Console.WriteLine("Available commands: look, move, pickup, use, inspect, inventory, escape, quit");
+                            Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit");
                             break;
 
                         case "l":
