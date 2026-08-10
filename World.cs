@@ -426,7 +426,7 @@ namespace ConsoleApp1
             Console.WriteLine("You found the yellow key!");
             return true;
         }
-        public void FinalDoorPuzzle(Player player)
+        public bool FinalDoorPuzzle(Player player)
         {
             if (CurrentRoom == _mapGrid[0, 1]) // room where you started
             {
@@ -443,7 +443,7 @@ namespace ConsoleApp1
                         Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");
                         Console.WriteLine("Hope you enjoyed playing The Cursed Castle. Thanks for playing!");
                         Thread.Sleep(6000);
-                        Environment.Exit(0);
+                        return true;
                     }
                 }
                 else
@@ -455,6 +455,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("There is no door to escape here.");
             }
+            return false;
         }
     }
 }
