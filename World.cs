@@ -426,7 +426,7 @@ namespace ConsoleApp1
             Console.WriteLine("You found the yellow key!");
             return true;
         }
-        public void FinalDoorPuzzle(Player player)
+        public bool FinalDoorPuzzle(Player player)
         {
             if (CurrentRoom == _mapGrid[0, 1]) // room where you started
             {
@@ -445,7 +445,7 @@ namespace ConsoleApp1
                         GameTimer.Stop();
                         Console.WriteLine(GameTimer.GetTime());
                         Thread.Sleep(6000);
-                        Environment.Exit(0);
+                        return true;
                     }
                 }
                 else
@@ -457,6 +457,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("There is no door to escape here.");
             }
+            return false;
         }
     }
 }
