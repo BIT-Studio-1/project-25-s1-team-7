@@ -68,6 +68,8 @@ namespace ConsoleApp1
                 """, 5);
             Thread.Sleep(1000);
 
+            GameTimer.Start();
+
             while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
@@ -82,6 +84,10 @@ namespace ConsoleApp1
                         case "help":
                             Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit");
                             break;
+
+                    case "time":
+                        Console.WriteLine($"Elapsed time: {GameTimer.GetTime()}");
+                        break;
 
                         case "l":
                         case "look":

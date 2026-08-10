@@ -442,6 +442,8 @@ namespace ConsoleApp1
                     {
                         Console.WriteLine("You use all four keys to unlock the door. It creaks open, revealing your escape route. Congratulations, you've escaped!");
                         Console.WriteLine("Hope you enjoyed playing The Cursed Castle. Thanks for playing!");
+                        GameTimer.Stop();
+                        Console.WriteLine(GameTimer.GetTime());
                         Thread.Sleep(6000);
                         Environment.Exit(0);
                     }
