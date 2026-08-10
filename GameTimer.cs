@@ -20,5 +20,10 @@ namespace ConsoleApp1
         {
             stopwatch.Stop();
         }
+
+        public static string GetTime()
+        {
+            return stopwatch.Elapsed.ToString(@"mm\:ss");
+        }
     }
 }
