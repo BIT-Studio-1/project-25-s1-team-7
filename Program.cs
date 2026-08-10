@@ -64,7 +64,7 @@ namespace ConsoleApp1
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
 
-                Available commands: look, move, pickup, use, inspect, inventory, escape, quit 
+                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit 
                 """, 5);
             Thread.Sleep(1000);
 
@@ -115,7 +115,7 @@ namespace ConsoleApp1
                             string itemName = Console.ReadLine() ?? "";
                             itemName = itemName.Trim().ToLower();
 
-                            Item foundItem = null;
+                            Item? foundItem = null;
 
                             foreach (Item item in world.CurrentRoom.Items)
                             {
@@ -148,7 +148,7 @@ namespace ConsoleApp1
                             Teleprinter("What do you want to use it on? ", 5);
                             Console.Write("> ");
                             string targetName = (Console.ReadLine() ?? "").Trim().ToLower();
-                            Item useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
+                            Item? useItem = player.Inventory.Find(i => i.Name.ToLower() == useItemName);
                             if (useItem != null)
                             {
                                 world.UseItem(useItem, targetName, player);
@@ -201,9 +201,7 @@ namespace ConsoleApp1
                             }
                             break;
 
-                        case "test":
-                            Renderer.Render(GameConfig.PathAssets + "./TestFile.txt");
-                            break;
+
 
                         case "escape":
                             world.FinalDoorPuzzle(player);
