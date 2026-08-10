@@ -10,5 +10,15 @@ namespace ConsoleApp1
     internal class GameTimer
     {
         private static readonly Stopwatch stopwatch = new Stopwatch();
+
+        public static void Start()
+        {
+            stopwatch.Restart();
+        }
+
+        public static void Stop()
+        {
+            stopwatch.Stop();
+        }
     }
 }
