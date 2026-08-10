@@ -210,7 +210,10 @@ namespace ConsoleApp1
 
 
                         case "escape":
-                            world.FinalDoorPuzzle(player);
+                            if (world.FinalDoorPuzzle(player) == true)
+                            {
+                                running = false;
+                            }
                             break;
 
                         case "map":
