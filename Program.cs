@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 
 // Utilities
 using static ConsoleApp1.GraphicUtils;
@@ -56,15 +57,19 @@ namespace ConsoleApp1
 
             ConsoleFormatter.Clear();
 
+
             //TODO: Load World
             World world = new World(); // maybe new World(PathAssets + "world.txt");
             bool running = true;
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
 
-                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit 
+                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit, time
                 """, 5);
             Thread.Sleep(1000);
+
+            GameTimer.Start();
+
             while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
@@ -77,8 +82,12 @@ namespace ConsoleApp1
                     {
                         case "h":
                         case "help":
-                            Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit");
+                            Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit, time");
                             break;
+
+                    case "time":
+                        Console.WriteLine($"Elapsed time: {GameTimer.GetTime()}");
+                        break;
 
                         case "l":
                         case "look":
