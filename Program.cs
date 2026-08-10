@@ -68,9 +68,6 @@ namespace ConsoleApp1
                 """, 5);
             Thread.Sleep(1000);
 
-            // Create and start game timer
-            Stopwatch timer = new();
-
             while (running) // Game loop, will continue until player types 'quit'
                 {
                     Console.Write("> ");
