@@ -64,7 +64,7 @@ namespace ConsoleApp1
             Teleprinter("""
                 You slowly regain consciousness - you realize you are imprisoned. 
 
-                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit 
+                Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit, time
                 """, 5);
             Thread.Sleep(1000);
 
@@ -82,7 +82,7 @@ namespace ConsoleApp1
                     {
                         case "h":
                         case "help":
-                            Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit");
+                            Console.WriteLine("Available commands: look, move, map, pickup, use, inspect, inventory, escape, quit, time");
                             break;
 
                     case "time":
